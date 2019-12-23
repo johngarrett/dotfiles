@@ -3,10 +3,15 @@ set sidescroll=1
 
 syntax on
 set number
+set ruler
 
 set hlsearch
 
+set smarttab
+set expandtab
 set tabstop=4
+set shiftwidth=4
+
 autocmd Filetype f90 setlocal tabstop=-2
 
 " sideways scrolling
@@ -18,7 +23,21 @@ nnoremap th  :tabfirst<CR>
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
 nnoremap tl  :tablast<CR>
-nnoremap tx  :tabclose<CR>
+
+" persistent undo
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
+
+" space = search
+map <space> /
 
 " plugs
 call plug#begin('~/.vim/plugged')
