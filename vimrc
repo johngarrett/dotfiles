@@ -43,6 +43,7 @@ map <space> /
 call plug#begin('~/.vim/plugged')
 
 Plug 'valloric/youcompleteme'
+Plug 'itchyny/lightline.vim'
 Plug 'kaicataldo/material.vim'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
@@ -60,6 +61,7 @@ endif
 
 " theme
 let g:material_theme_style = 'darker'
+set laststatus=2
 colorscheme material
 
 set statusline+=%#warningmsg#
@@ -71,6 +73,7 @@ set statusline+=%*
 " let g:syntastic_swift_swiftlint_use_defaults = 1 
 " swiftlint searches for the .yml file in the current directory, not root
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
