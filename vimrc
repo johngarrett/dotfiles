@@ -11,6 +11,7 @@ set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
+let g:vim_markdown_folding_disabled = 1
 
 autocmd Filetype f90 setlocal tabstop=-2
 
@@ -47,10 +48,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'kaicataldo/material.vim'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
 " colors
+set t_Co=256
+
 if (has('nvim'))
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 endif
@@ -80,4 +84,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " enable swift lint
-let g:syntastic_swift_checkers = ['swiftlint']
+let g:syntastic_swift_checkers = ['swiftlint', 'markdown']
