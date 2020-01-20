@@ -1,1 +1,2 @@
 alias ls='ls -AsSGlU'
+alias ecepp='g++ -Wall -std=c++14 -g -O2 -pipe -Werror=format-security'
