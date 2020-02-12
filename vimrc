@@ -37,7 +37,12 @@ cnoremap <C-A>		<Home>
 cnoremap <C-E>		<End>
 cnoremap <C-K>		<C-U>
 
-" space = search
+" directory management
+let g:netrw_banner = 0
+:com E Explore
+:com Bo browse oldfiles " ex: vsp #<18
+let g:netrw_winsize = 25
+
 map <space> /
 
 " plugs
