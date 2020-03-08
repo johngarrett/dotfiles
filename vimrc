@@ -39,9 +39,12 @@ cnoremap <C-K>		<C-U>
 
 " directory management
 let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 :com E Explore
 :com Bo browse oldfiles " ex: vsp #<18
-let g:netrw_winsize = 25
 
 map <space> /
 
