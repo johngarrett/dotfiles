@@ -11,7 +11,7 @@ set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set timeoutlen=100
+" set timeoutlen=100
 let g:vim_markdown_folding_disabled = 1
 
 autocmd Filetype f90 setlocal tabstop=-2
