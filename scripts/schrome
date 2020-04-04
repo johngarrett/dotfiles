@@ -1,0 +1,2 @@
+#!/usr/bin/zsh
+exec google-chrome-beta --force-device-scale-factor=0.85 --force-dark-mode
