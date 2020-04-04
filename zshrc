@@ -1,4 +1,4 @@
-export ZSH="/Volumes/home/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 ZSH_THEME="pi"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"

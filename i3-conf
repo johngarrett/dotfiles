@@ -1,21 +1,19 @@
-set $mod Control
+set $mod Mod1
 set $alt_mod Mod1
 
 # startup
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
-exec --no-startup-id compton --config ~/.config/compton.conf
-exec --no-startup-id redshift -l 33.7490:84.3880
-exec --no-startup-id redshift-gtk
-exec --no-startup-id nm-applet
+exec --no-startup-id picom
+exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
 # Font for window titles. Will also be used by the bar unless a different font
-font pango:SFMono 6
+font pango:Amino 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a fullscreen terminal
-bindsym $alt_mod+Return exec urxvt
+bindsym $alt_mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -27,22 +25,16 @@ bindsym $alt_mod+Shift+s exec maim -s ~/images/screenshots/$(date +%b-%a-%H:%M-%
 client.focused #212121 #212121 #FFFFFF
 
 # start application launcher
-bindsym $mod+space exec rofi -show run
+bindsym $mod+space exec rofi -show run -theme ~/dotfiles/rofi_material_theme.rasi -width 40 -lines 10
 
 bindsym $mod+$alt_mod+Shift+Left move workspace to output left
-bindsym $mod+$alt_mod+Shift+Right move workspace to output righ
+bindsym $mod+$alt_mod+Shift+Right move workspace to output right
 
 # alternatively, you can use the cursor keys:
-bindsym $alt_mod+Left focus left
-bindsym $alt_mod+Down focus down
-bindsym $alt_mod+Up focus up
-bindsym $alt_mod+Right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $alt_mod+Shift+Left move left
-bindsym $alt_mod+Shift+Down move down
-bindsym $alt_mod+Shift+Up move up
-bindsym $alt_mod+Shift+Right move right
+bindsym $alt_modt+Left move left
+bindsym $alt_mod+Down move down
+bindsym $alt_mod+Up move up
+bindsym $alt_mod+Right move right
 
 # split in horizontal orientation
 bindsym $alt_mod+h split h
@@ -50,8 +42,8 @@ bindsym $alt_mod+h split h
 # split in vertical orientation
 bindsym $alt_mod+v split v
 
-bindsym $alt_mod+$mod+Left workspace prev
-bindsym $alt_mod+$mod+Right workspace next
+bindsym Ctrl+Left workspace prev
+bindsym Ctrl+Right workspace next
 
 # enter fullscreen mode for the focused container
 bindsym $alt_mod+f fullscreen toggle
@@ -144,36 +136,8 @@ gaps vertical 2
 smart_gaps on
 #smart_gaps inverse_outer
 
-# status bar
-bar {
-    position top
-    # no scroll on mouse events
-    bindsym button4 nop
-    bindsym button5 nop
-    bindsym button6 nop
-    bindsym button7 nop
-    font xft:DejaVu Sans Mono for Powerline 6.5 
-    status_command /usr/bin/bumblebee-status -m spotify bluetooth nic memory sensors datetime amixer battery -p memory.format="{percent:05.02f}%" nic.format="{ssid}" datetime.format="%-m/%-d %a %-H:%M" -t iceberg-dark-powerline 
-    colors {
-        focused_workspace  #000000 #000000 #FFFFFF
-        active_workspace   #5f676a #000000 #FFFFFF
-        inactive_workspace #000000 #000000 #696969
-    }
-}
-
 # no mouse stuff on hover
 focus_follows_mouse no
-
-# brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-# granular brightness
-bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 1
-bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 1
-
-# keyboard backlight
-bindsym XF86KbdBrightnessDown exec kbdlight down 10
-bindsym XF86KbdBrightnessUp exec kbdlight up 10
 
 # volume
 bindsym XF86AudioMute exec amixer set Master toggle
@@ -185,9 +149,6 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-# app expose
-bindcode 120 exec skippy-xd
 
 # background image
 exec --no-startup-id feh --bg-fill ~/images/charlotte.jpg
