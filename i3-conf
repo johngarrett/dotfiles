@@ -6,12 +6,16 @@ exec --no-startup-id dunst -config ~/dotfiles/dunstrc
 exec --no-startup-id picom
 exec --no-startup-id polybar main
 exec --no-startup-id polybar secondary
+exec --no-startup-id xmodmap ~/.Xmodmap
 
 # Font for window titles
 font pango:Amino 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+# fix issues with origin 
+for_window [instance="origin.exe"] floating enable
+for_window [instance="starwarsbattlefront.exe"] floating enable
 
 # start a fullscreen terminal
 bindsym $mod+Return exec alacritty
@@ -20,8 +24,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # screenshot
-bindsym $mod+Shift+s exec maim -s ~/images/screenshots/$(date +%b-%a-%H:%M-%Y).png # save to file
-bindsym $mod+Ctrl+s exec maim -s | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+s exec maim -o -s ~/images/screenshots/$(date +%b-%a-%H:%M-%Y).png # save to file
+bindsym $mod+Ctrl+s exec maim -o -s | xclip -selection clipboard -t image/png
 
 # set client colors
 client.focused #212121 #212121 #FFFFFF
@@ -130,10 +134,10 @@ bindsym $mod+r mode "resize"
 for_window [class="^.*"] border pixel 0
 
 # gaps -- not feeling them rn -- feeling them rn 10/25
-gaps inner 5
-gaps horizontal 2
-gaps vertical 0
-#smart_gaps inverse_outer
+gaps inner 9
+gaps horizontal 4
+gaps vertical -5
+smart_gaps on
 
 # no mouse stuff on hover
 focus_follows_mouse no

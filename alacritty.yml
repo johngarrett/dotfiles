@@ -14,7 +14,7 @@ font:
   use_anti_alias: true
   normal:
     family: Perplexed
-    style: Normal
+    style: Medium
 
   bold:
     family: Perplexed
