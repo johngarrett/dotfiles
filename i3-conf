@@ -8,15 +8,20 @@ exec --no-startup-id polybar main
 exec --no-startup-id polybar secondary
 exec xmodmap ~/.Xmodmap
 exec --no-startup-id ssh-logs
+exec --no-startup-id lxsession
 
 # Font for window titles
-font pango:Amino 10
+font SF Mono Powerline Bold 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-# fix issues with origin 
+
+# float certain windows
 for_window [instance="origin.exe"] floating enable
 for_window [instance="starwarsbattlefront.exe"] floating enable
+for_window [instance="lxappearance"] floating enable
+for_window [instance="pavucontrol"] floating enable
+for_window [instance="arandr"] floating enable
 
 # start a fullscreen terminal
 bindsym $mod+Return exec alacritty
@@ -27,6 +32,9 @@ bindsym $mod+q kill
 # screenshot
 bindsym $mod+Shift+s exec maim -o -s ~/images/screenshots/$(date +%b-%a-%H:%M-%Y).png # save to file
 bindsym $mod+Ctrl+s exec maim -o -s | xclip -selection clipboard -t image/png
+
+# emoji picker
+bindsym Ctrl+$mod+space exec rofimoji
 
 # set client colors
 client.focused #212121 #212121 #FFFFFF
