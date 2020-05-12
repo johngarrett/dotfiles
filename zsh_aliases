@@ -1,4 +1,4 @@
-alias ls='ls -AsSGlU'
+alias ls='ls -AsSGlU --color=auto'
 alias ecepp='g++ -Wall -std=c++14 -O2 -pipe -Werror=format-security'
 export THEOS=~/theos
 alias claer=clear

@@ -14,6 +14,7 @@ set shiftwidth=4
 " set timeoutlen=100
 let g:vim_markdown_folding_disabled = 1
 
+set encoding=utf-8
 autocmd Filetype f90 setlocal tabstop=-2
 
 " sideways scrolling

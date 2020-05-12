@@ -1,55 +1,8 @@
-!set up for mac display
+Xft.dpi: 98
+Xft.antialias: true
+Xft.hinting: true
 Xft.rgba: rgb
-Xft.antialias: true 
-Xft.hinting: FALSE
+Xft.autohint: false
+Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-! URxvt appearance
-URxvt*font: xft:DejaVu Sans Mono for Powerline:regular:size=7.5
-URxvt*imFont: xft:DejaVu Sans Mono for Powerline:regular:size=7.5
-URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:size=7.5
-URxvt*italicFont: xft:DejaVu Sans Mono for Powerline:italic:size=7.5
-URxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:italic:size=7.5
-
-URxvt.scrollBar: false
-URxvt.scrollBar_right: false
-URxvt.termName:rxvt-unicode-256color
-URxvt.iso14755: false
-URxvt.buffered: true
-URxvt.saveLines: 9999
-URxvt.urlLanucher: /usr/bin/schrome
-
-! Cursor
-URxvt.cursorBlink: true
-URxvt.cursorColor: #657b83
-URxvt.cursorUnderline: false
-URxvt.pointerBlank: true
-
-! special
-*.foreground:   #ABB2BF
-*.background:   #292929
-*.cursorColor:  #ABB2BF
-! black
-*.color0:       #282C34
-*.color8:       #3E4452
-! red
-*.color1:       #E06C75
-*.color9:       #BE5046
-! green
-*.color2:       #98C379
-*.color10:      #98C379
-! yellow
-*.color3:       #E5C07B
-*.color11:      #D19A66
-! blue
-*.color4:       #61AFEF
-*.color12:      #61AFEF
-! magenta
-*.color5:       #C678DD
-*.color13:      #C678DD
-! cyan
-*.color6:       #56B6C2
-*.color14:      #56B6C2
-! white
-*.color7:       #ABB2BF
-*.color15:      #5C6370
