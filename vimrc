@@ -55,9 +55,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'valloric/youcompleteme'
 Plug 'itchyny/lightline.vim'
 Plug 'kaicataldo/material.vim'
+Plug 'segeljakt/vim-stealth'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'plasticboy/vim-markdown'
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'StanAngeloff/php.vim'
 
 call plug#end()
 
