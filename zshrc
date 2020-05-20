@@ -1,6 +1,5 @@
-export ZSH="/Volumes/home/.oh-my-zsh"
-ZSH_THEME="pi"
-eval "$(starship init zsh)"
+export ZSH="/home/garrepi/.oh-my-zsh"
+ZSH_THEME="avit"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
