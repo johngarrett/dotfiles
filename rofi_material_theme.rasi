@@ -25,10 +25,10 @@
 	base0E: #C792EA;
 	base0F: #FF5370;
 
-	spacing: 5;
+	spacing: 10;
 	background-color: transparent;
 
-	font: "SF Mono 9";
+	font: "SF Mono 16";
 }
 
 window {
@@ -38,8 +38,8 @@ window {
 
 mainbox {
 	children: [inputbar, listview];
-	spacing: 5px;
-	padding: 5px;
+	spacing: 10px;
+	padding: 10px;
 	border: 0px;
 }
 
@@ -49,9 +49,9 @@ inputbar {
 }
 
 entry {
-	padding: 7px;
+	padding: 10px;
 	text-color: @base07;
-	font: "SF Mono Bold 10";
+	font: "SF Mono Bold 16";
 }
 
 button, textbox {
@@ -62,7 +62,7 @@ button, textbox {
 
 listview {
 	scrollbar: false;
-	margin: 0px 0px 0 10px;
+	margin: 10px 0px 0 10px;
 }
 
 element normal {
