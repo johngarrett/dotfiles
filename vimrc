@@ -63,6 +63,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'StanAngeloff/php.vim'
+Plug 'alvan/vim-php-manual'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -82,20 +84,20 @@ let g:material_theme_style = 'darker'
 set laststatus=2
 colorscheme material
 
+" syntastic
+let g:syntastic_aggregate_errors = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" swiftlint searches for the .yml file in the current directory, not root
-" todo: write an autocmd script
-" let g:syntastic_swift_swiftlint_use_defaults = 1 
-" swiftlint searches for the .yml file in the current directory, not root
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:ycm_autoclose_preview_window_after_completion = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" enable swift lint
-let g:syntastic_swift_checkers = ['swiftlint', 'mdl']
+"" linters
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_exec = '/usr/local/bin/phpcs'
+
+let g:syntastic_python_checkers = ['pylint']
+let g:loaded_syntastic_cpp_cpplint_checker = 1
