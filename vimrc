@@ -45,7 +45,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 2
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-:com E Explore
+:com E Vexplore
 :com Bo browse oldfiles " ex: vsp #<18
 
 map <space> /
@@ -54,17 +54,19 @@ map <space> /
 call plug#begin('~/.vim/plugged')
 
 Plug 'valloric/youcompleteme'
-Plug 'itchyny/lightline.vim'
-Plug 'kaicataldo/material.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'gruvbox-community/gruvbox'
 Plug 'segeljakt/vim-stealth'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'plasticboy/vim-markdown'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'iamcco/markdown-preview.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'alvan/vim-php-manual'
 Plug 'rust-lang/rust.vim'
+Plug 'tmhedberg/matchit'
 
 call plug#end()
 
@@ -80,9 +82,16 @@ if (has('termguicolors'))
 endif
 
 " theme
-let g:material_theme_style = 'darker'
+set background=dark
 set laststatus=2
-colorscheme material
+set termguicolors
+colorscheme gruvbox
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
 
 " syntastic
 let g:syntastic_aggregate_errors = 1
