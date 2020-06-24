@@ -2,6 +2,7 @@ set $mod Mod1
 
 # startup
 exec --no-startup-id dunst -config ~/dotfiles/dunstrc
+exec --no-startup-id unclutter
 exec --no-startup-id picom
 exec --no-startup-id polybar main
 exec --no-startup-id polybar secondary
