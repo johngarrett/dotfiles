@@ -1,13 +1,12 @@
 /*
- * ROFI color theme
- *
- * Based on Base16 Material Color Scheme (https://github.com/ntpeters/base16-materialtheme-scheme) and Solarized
- *
- * User: Tomaszali & darthswag
- * Copyright: Tomas Zaluckij & darthswag
+ * ROFI material color theme
+ * creator: garrepi
  */
 
 *{
+    black: #252525;
+    white: #f5f5f5;
+    text: #5c6f71;
 	base00: #263238;
 	base01: #2E3C43;
 	base02: #314549;
@@ -25,62 +24,49 @@
 	base0E: #C792EA;
 	base0F: #FF5370;
 
-	spacing: 10;
-	background-color: transparent;
-
+	background-color: #252525;
 	font: "SF Mono 16";
+    width: 1000px;
+    height: 500px;
 }
 
 window {
-	transparency: "screenshot";
-	background-color: rgba(36, 46, 51, 0.96);
+	background-color: @black;
+    border-radius: 8px;
 }
 
 mainbox {
 	children: [inputbar, listview];
-	spacing: 10px;
-	padding: 10px;
-	border: 0px;
 }
 
 inputbar {
-	padding: 0 0px;
+	padding: 32px;
 	children: [entry, case-indicator];
 }
 
 entry {
-	padding: 10px;
-	text-color: @base07;
+    padding: 16px;
+	text-color: @white;
+	background-color: @text;
+    border-radius: 8px;
 	font: "SF Mono Bold 16";
-}
-
-button, textbox {
-	background-color: @base03;
-	text-color: @base07;
-	padding: 10px;
 }
 
 listview {
 	scrollbar: false;
-	margin: 10px 0px 0 10px;
+    padding: 0px 32px;
+	font: "SF Mono 16";
 }
 
+element {
+    padding: 16px;
+    border-radius: 8px;
+	text-color: @white;
+}
 element normal {
 	background-color: transparent;
 }
 
 element selected {
-	background-color: rgb (0, 54, 66);
-}
-
-element normal normal, element selected normal, element alternate normal {
-	text-color: @base07;
-}
-
-element normal urgent, element selected urgent, element alternate urgent {
-	text-color: @base0F;
-}
-
-element normal active, element selected active, element alternate active {
-	text-color: @base0B;
+	background-color: rgba (255, 255, 255, 0.1);
 }

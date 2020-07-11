@@ -36,13 +36,13 @@ bindsym $mod+Shift+s exec maim -o -s ~/images/screenshots/$(date +%b-%a-%H:%M-%Y
 bindsym $mod+Ctrl+s exec maim -o -s | xclip -selection clipboard -t image/png
 
 # emoji picker
-bindsym Ctrl+$mod+space exec rofimoji
+bindsym Ctrl+$mod+space exec rofimoji -theme ~/dotfiles/rofi_material_theme.rasi
 
 # set client colors
 client.focused #212121 #212121 #FFFFFF
 
 # start application launcher
-bindsym $mod+space exec rofi -show run -theme ~/dotfiles/rofi_material_theme.rasi -width 40 -lines 10
+bindsym $mod+space exec rofi -show run -theme ~/dotfiles/rofi_material_theme.rasi
 
 # move workspace
 bindsym Ctrl+$mod+Shift+Left move workspace to output left
