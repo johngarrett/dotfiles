@@ -77,6 +77,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 Plug 'segeljakt/vim-stealth'
 Plug 'https://github.com/keith/swift.vim.git'
+Plug 'https://github.com/TheCodedSelf/syntastic-swift.git'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -141,4 +142,7 @@ let g:syntastic_php_phpcs_exec = '/usr/local/bin/phpcs'
 
 let g:syntastic_python_checkers = ['pylint']
 let g:loaded_syntastic_cpp_cpplint_checker = 1
+
+let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm']
+
 
