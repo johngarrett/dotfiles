@@ -1,196 +1,130 @@
-
 [colors]
-background = #222
+background = #252525
 background-alt = #444
 
-foreground = #dfdfdf
-foreground-alt = #555
+foreground = #f5f5f5
+foreground-alt = #a1b0b8
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+red = #FF443E
+green = #C3D82C
+yellow = #FFC135
+blue = #42A5F5
+magenta = #D81B60
+cyan = #00ACC1
+text  = #A1B0B8
 
 [bar/main]
 wm-restack = i3
 monitor = DP-0
 width = 100%
 height = 40
-radius = 6.0
+radius = 8.0
 fixed-center = false
+
+margin-top = 10
+margin-bottom = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+line-size = 0
 
 border-size = 4
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
+
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = fixed:pixelsize=16;1
-font-1 = unifont:fontformat=truetype:size=14:antialias=false;0
-font-2 = siji:pixelsize=16;1
+font-0 = SF Mono Powerline:pixelsize=16:weight=bold;1
+font-1 = SF Mono Powerline:fontformat=truetype:size=14:antialias=false:weight=bold;0
+font-2 = SF Mono Powerline:pixelsize=16:weight=bold;1
 
-modules-left = bspwm i3
-modules-center = mpd
-modules-right = pulseaudio xkeyboard memory cpu temperature wlan eth date time 
+modules-left = i3
+modules-right = wlan memory cpu temperature eth date time 
 
 tray-position = right
-tray-padding = 2
+tray-padding-right = 1
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-[bar/secondary]
-monitor = DVI-D-0
-width = 100%
-height = 27
-
-radius = 6.0
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 4
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-
-modules-left = bspwm i3
-modules-center = mpd
-modules-right = pulseaudio xkeyboard memory cpu temperature wlan eth date time 
-
-tray-position = right
-tray-padding = 2
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-label-indicator-padding = 2
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
 index-sort = true
-wrapping-scroll = false
+strip-wsnumbers = true
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;VIII
+ws-icon-8 = 9;IX
+ws-icon-default = ?
 
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+format = <label-state>
 
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = #2e2e2e
-label-focused-underline= #e8e8e8
+label-focused = %icon%
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.foreground}
 label-focused-padding = 2
 
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %icon%
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.text}
 label-unfocused-padding = 2
 
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
 [module/memory]
 type = internal/memory
-interval = 0.2
-format = mem <label>
-label = %percentage_used:2%%
-format-underline = ${xrdb:color13:#4bffdc}
+interval = 1
+format = <label>
+format-foreground = ${colors.blue}
+label = %gb_free%
 
 [module/cpu]
 type = internal/cpu
 interval = 1
-label = cpu %percentage:2%%
-format-underline = #ffb6b6
+format-foreground = ${colors.yellow}
+label = %percentage:2%%
 
 [module/wlan]
 type = internal/network
 interface = wlan0
-interval = 3.0
+interval = 15.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #639a67
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+label-connected-foreground = ${colors.text}
+label-connected = %local_ip%
+format-disconnected = <label-disconnected>
 
 [module/eth]
 type = internal/network
 interface = enp4s0
-interval = 3.0
+interval = 15.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = <label-disconnected>
 
 [module/date]
 type = internal/date
-date = "%a %b %d"
+date = "%m/%d"
 interval = 5
-format-underline = #daf0ee
 label = %date%
 
 [module/time]
@@ -202,11 +136,11 @@ label = %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -230,31 +164,21 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 70
+label-foreground = ${colors.red}
 
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
+format = <label>
+format-warn = <label-warn>
 format-warn-underline = #d92e2e
 
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
+margin-top = 8
+margin-left = 8
+margin-right = 8
+margin-bottom = 8
