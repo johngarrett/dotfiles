@@ -1,2 +1,0 @@
-#!/usr/bin/zsh
-exec /opt/resolve/bin/resolve

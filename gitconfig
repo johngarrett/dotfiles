@@ -1,0 +1,11 @@
+[user]
+	email = jacgarrett18@gmail.com
+	name = John Garrett
+[core]
+	editor = vim
+[alias]
+	co = checkout
+    c = commit
+    ac = !git add -A && git commit
+    pl = !git fetch --all && git pull
+    p = push

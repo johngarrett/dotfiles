@@ -1,16 +1,16 @@
 set $mod Mod1
+set $alt Mod4
 
 # startup
 exec --no-startup-id dunst -config ~/dotfiles/dunstrc
 exec --no-startup-id unclutter
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backend
 exec --no-startup-id polybar main
 exec --no-startup-id polybar secondary
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id ssh-logs
 exec --no-startup-id lxsession
-exec --no-startup-id ssh-add ~/.ssh/id_rsa_bitbucket
-exec --no-startup-id ssh-add ~/.ssh/id_rsa_github
+exec --no-startup-id greenclip daemon 
 
 # Font for window titles
 font SF Mono Powerline Bold 20
@@ -36,7 +36,9 @@ bindsym $mod+Shift+s exec maim -o -s ~/images/screenshots/$(date +%b-%a-%H:%M-%Y
 bindsym $mod+Ctrl+s exec maim -o -s | xclip -selection clipboard -t image/png
 
 # emoji picker
-bindsym Ctrl+$mod+space exec rofimoji -theme ~/dotfiles/rofi_material_theme.rasi
+bindsym Ctrl+$mod+space exec rofimoji
+# clipboard viewer
+bindsym $alt+$mod+space exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/dotfiles/rofi_material_theme.rasi
 
 # set client colors
 client.focused #212121 #212121 #FFFFFF
@@ -145,10 +147,9 @@ bindsym $mod+r mode "resize"
 for_window [class="^.*"] border pixel 0
 
 # gaps -- not feeling them rn -- feeling them rn 10/25
-gaps inner 9
+gaps inner 4
 gaps horizontal 4
-gaps vertical -5
-smart_gaps on
+gaps vertical 0
 
 # no mouse stuff on hover
 focus_follows_mouse no
