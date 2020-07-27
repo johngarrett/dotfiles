@@ -7,6 +7,7 @@ set number
 set ruler
 
 set hlsearch
+set nowrap
 
 set smarttab
 set expandtab
@@ -107,6 +108,13 @@ if (has('termguicolors'))
 endif
 
 let g:tagbar_phpctags_bin='PATH_TO_phpctags'
+
+" tmux colors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " theme
 set background=dark
