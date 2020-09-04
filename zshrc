@@ -18,7 +18,7 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_COMMAND_TIME_MSG="Execution time: %s sec"
 ZSH_COMMAND_TIME_COLOR="yellow"
 
-antigen theme agnoster
+antigen theme bira 
 antigen apply
 
 . ~/.zsh_aliases
@@ -33,3 +33,8 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 export PATH="$PATH:/home/garrepi/.nvm/versions/node/v10.13.0/bin/node"
+
+export PS2DEV=~/.usr/local/ps2dev
+export PS2SDK=$PS2DEV/ps2sdk
+export GSKIT=$PS2DEV/gsKit
+export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin

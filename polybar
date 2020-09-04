@@ -90,6 +90,7 @@ cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
+pin-workspaces = true
 index-sort = true
 strip-wsnumbers = true
 

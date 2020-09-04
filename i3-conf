@@ -6,7 +6,7 @@ set $secondary_monitor DVI-D-0
 
 # startup
 exec --no-startup-id dunst -config ~/dotfiles/dunstrc
-exec --no-startup-id unclutter
+exec --no-startup-id unclutter -idle 1
 exec --no-startup-id picom --experimental-backend
 exec --no-startup-id polybar main
 exec --no-startup-id polybar secondary
@@ -106,7 +106,7 @@ workspace bracketleft output $secondary_monitor
 workspace bracketright output $secondary_monitor
 
 # primary navigation
-bindsym $mod+1 workspace 1 
+bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
