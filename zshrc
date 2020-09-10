@@ -30,11 +30,14 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-export PATH="$PATH:/home/garrepi/.nvm/versions/node/v10.13.0/bin/node"
+export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/init-nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$PATH:/home/garrepi/.nvm/versions/node/v10.13.0/bin"
 
 export PS2DEV=~/.usr/local/ps2dev
 export PS2SDK=$PS2DEV/ps2sdk
 export GSKIT=$PS2DEV/gsKit
 export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
