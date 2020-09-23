@@ -9,3 +9,5 @@
     ac = !git add -A && git commit
     pl = !git fetch --all && git pull
     p = push
+[init]
+	templatedir = ~/.git_template

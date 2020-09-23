@@ -13,7 +13,7 @@ exec --no-startup-id polybar secondary
 exec --no-startup-id ssh-logs
 exec --no-startup-id lxsession
 exec --no-startup-id greenclip daemon 
-exec --no-startup-id xrandr --output DP-0 --primary --rate 60.0 --output DVI-D-0 --rotate left --right-of DP-0 --scale 1.6x1.6 
+exec --no-startup-id xrandr --output DP-0 --primary --rate 60.0 --output HDMI-0 --left-of DP-0 --scale 1.6x1.6 
 exec --no-startup-id xmodmap ~/.Xmodmap
 
 # Font for window titles
