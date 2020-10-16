@@ -2,7 +2,7 @@ set $mod Mod1
 set $alt Mod4
 
 set $primary_monitor DP-0
-set $secondary_monitor DVI-D-0
+set $secondary_monitor HMDI-0
 
 # startup
 exec --no-startup-id dunst -config ~/dotfiles/dunstrc

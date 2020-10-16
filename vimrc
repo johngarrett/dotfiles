@@ -3,6 +3,7 @@ set sidescroll=1
 set autoread " auto update file with new changes
 
 syntax on
+syntax enable
 set number
 set ruler
 
@@ -79,6 +80,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'segeljakt/vim-stealth'
 Plug 'keith/swift.vim'
 Plug 'TheCodedSelf/syntastic-swift'
+Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -88,7 +90,6 @@ Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'JulesWang/css.vim'
-Plug 'iamcco/markdown-preview.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'alvan/vim-php-manual'
@@ -131,6 +132,7 @@ let g:airline_powerline_fonts = 1
 
 " syntastic
 filetype plugin on
+filetype plugin indent on
 let g:syntastic_aggregate_errors = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -154,4 +156,5 @@ let g:loaded_syntastic_cpp_cpplint_checker = 1
 
 let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm']
 
+ let g:rust_cargo_avoid_whole_workspace = 0
 
