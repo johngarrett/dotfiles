@@ -1,2 +1,2 @@
 #!/usr/bin/zsh
-exec sh google-chrome-beta --force-dark-mode
+exec sh google-chrome-unstable --force-dark-mode

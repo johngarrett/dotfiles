@@ -2,7 +2,7 @@ set $mod Mod1
 set $alt Mod4
 
 set $primary_monitor DP-0
-set $secondary_monitor HMDI-0
+set $secondary_monitor HDMI-0
 
 # startup
 exec --no-startup-id dunst -config ~/dotfiles/dunstrc
@@ -13,11 +13,10 @@ exec --no-startup-id polybar secondary
 exec --no-startup-id ssh-logs
 exec --no-startup-id lxsession
 exec --no-startup-id greenclip daemon 
-exec --no-startup-id xrandr --output DP-0 --primary --rate 60.0 --output HDMI-0 --left-of DP-0 --scale 1.6x1.6 
 exec --no-startup-id xmodmap ~/.Xmodmap
 
 # Font for window titles
-font SF Mono Powerline Bold 20
+font pango:SF Mono Powerline Bold 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -38,6 +37,8 @@ bindsym $mod+q kill
 # screenshot
 bindsym $mod+Shift+s exec maim -o -s ~/images/screenshots/$(date +%b-%a-%H:%M-%Y).png # save to file
 bindsym $mod+Ctrl+s exec maim -o -s | xclip -selection clipboard -t image/png
+
+bindsym $mod+m mode "default"
 
 # emoji picker
 bindsym Ctrl+$mod+space exec rofimoji

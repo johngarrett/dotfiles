@@ -1,5 +1,6 @@
-alias ls='ls -AsSGlU --color=auto'
+alias ls='ls -AsSGlUh --color=auto'
 alias ecepp='g++ -Wall -std=c++14 -O2 -pipe -Werror=format-security'
 export THEOS=~/theos
 alias claer=clear
 alias tmux='tmux -2'
+export PATH=~/pebble-dev/pebble-sdk-4.5-linux64/bin:$PATH

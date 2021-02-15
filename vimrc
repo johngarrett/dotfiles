@@ -1,6 +1,5 @@
 set mouse=a
 set sidescroll=1
-set autoread " auto update file with new changes
 
 syntax on
 syntax enable
@@ -14,7 +13,6 @@ set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
-let g:vim_markdown_folding_disabled = 1
 
 set encoding=utf-8
 autocmd Filetype f90 setlocal tabstop=-2
@@ -50,9 +48,6 @@ cnoremap <C-A>		<Home>
 cnoremap <C-E>		<End>
 cnoremap <C-K>		<C-U>
 
-
-nmap <F8> :TagbarToggle<CR>
-
 " directory management
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -67,14 +62,7 @@ map <space> /
 " plugs
 call plug#begin('~/.vim/plugged')
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 Plug 'segeljakt/vim-stealth'
@@ -95,7 +83,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'alvan/vim-php-manual'
 Plug 'rust-lang/rust.vim'
 Plug 'tmhedberg/matchit'
-
+Plug 'prabirshrestha/vim-lsp'
 call plug#end()
 
 " colors
@@ -124,6 +112,7 @@ set laststatus=2
 set termguicolors
 colorscheme gruvbox
 
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -143,10 +132,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
 "" linters
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_exec = '/usr/local/bin/phpcs'
@@ -156,5 +141,16 @@ let g:loaded_syntastic_cpp_cpplint_checker = 1
 
 let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm']
 
- let g:rust_cargo_avoid_whole_workspace = 0
+" SourceKit-LSP configuration
+if executable('sourcekit-lsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'sourcekit-lsp',
+        \ 'cmd': {server_info->['sourcekit-lsp']},
+        \ 'whitelist': ['swift'],
+        \ })
+endif
 
+autocmd FileType swift nnoremap <C-]> :LspDefinition<CR>
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
