@@ -33,9 +33,10 @@ set splitright
 
 " persistent undo
 try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undodir=~/.cache/nvim/undodir
     set undofile
 catch
+    echoerr 'Unable to set undo directory'
 endtry
 
 " directory management
@@ -59,6 +60,19 @@ Plug 'StanAngeloff/php.vim'
 Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+"" Auto-Complete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+"" vnsip
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 
 " enhancements
 Plug 'tmhedberg/matchit' " improved matching with %
@@ -100,3 +114,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
+
+" nvim-comp
+set completeopt=menu,menuone,noselect
