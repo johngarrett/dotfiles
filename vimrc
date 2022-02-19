@@ -2,17 +2,17 @@ set mouse=a
 set sidescroll=1
 
 syntax on
+syntax enable
 set number
 set ruler
 
 set hlsearch
+set nowrap
 
 set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
-" set timeoutlen=100
-let g:vim_markdown_folding_disabled = 1
 
 set encoding=utf-8
 autocmd Filetype f90 setlocal tabstop=-2
@@ -26,6 +26,15 @@ nnoremap th  :tabfirst<CR>
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
 nnoremap tl  :tablast<CR>
+
+" splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
 
 " persistent undo
 try
@@ -48,24 +57,40 @@ let g:netrw_winsize = 25
 :com E Explore
 :com Bo browse oldfiles " ex: vsp #<18
 
-map <space> /
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
 " plugs
 call plug#begin('~/.vim/plugged')
 
-Plug 'valloric/youcompleteme'
-Plug 'itchyny/lightline.vim'
-Plug 'kaicataldo/material.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'gruvbox-community/gruvbox'
 Plug 'segeljakt/vim-stealth'
-Plug 'https://github.com/keith/swift.vim.git'
-Plug 'https://github.com/vim-syntastic/syntastic.git'
-Plug 'plasticboy/vim-markdown'
-Plug 'https://github.com/pangloss/vim-javascript.git'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'keith/swift.vim'
+Plug 'TheCodedSelf/syntastic-swift'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'ap/vim-css-color'
+Plug 'vim-php/tagbar-phpctags.vim'
+Plug 'majutsushi/tagbar'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'JulesWang/css.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'alvan/vim-php-manual'
 Plug 'rust-lang/rust.vim'
-
+Plug 'tmhedberg/matchit'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'zacharied/lc3.vim'
 call plug#end()
 
 " colors
@@ -79,12 +104,31 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
+let g:tagbar_phpctags_bin='PATH_TO_phpctags'
+
+" tmux colors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 " theme
-let g:material_theme_style = 'darker'
+set background=dark
 set laststatus=2
-colorscheme material
+set termguicolors
+colorscheme gruvbox
+
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
 
 " syntastic
+filetype plugin on
+filetype plugin indent on
 let g:syntastic_aggregate_errors = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -102,3 +146,29 @@ let g:syntastic_php_phpcs_exec = '/usr/local/bin/phpcs'
 let g:syntastic_python_checkers = ['pylint']
 let g:loaded_syntastic_cpp_cpplint_checker = 1
 
+let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm']
+
+" SourceKit-LSP configuration
+if executable('sourcekit-lsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'sourcekit-lsp',
+        \ 'cmd': {server_info->['sourcekit-lsp']},
+        \ 'whitelist': ['swift'],
+        \ })
+endif
+
+autocmd FileType swift nnoremap <C-]> :LspDefinition<CR>
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
