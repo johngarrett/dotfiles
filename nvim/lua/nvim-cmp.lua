@@ -26,16 +26,7 @@ cmp.setup({
         { name = 'vsnip' }, -- For vsnip users.
     }, {
         { name = 'buffer' },
-    })
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
-    }, {
-        { name = 'buffer' },
-    })
+    }),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -45,12 +36,20 @@ cmp.setup.cmdline('/', {
     }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    })
-})
+-- make TAB complete vsnip if available!
+local t = function(str)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
+_G.tab_complete = function()
+	if vim.fn.call("vsnip#available", {1}) == 1 then
+		return t("<Plug>(vsnip-expand-or-jump)")
+	elseif vim.fn.pumvisible() then
+		return t("<C-n>")
+	else
+		return t("<Tab>")
+	end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})

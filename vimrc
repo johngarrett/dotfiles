@@ -73,6 +73,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'lervag/vimtex'
+
 
 " enhancements
 Plug 'tmhedberg/matchit' " improved matching with %
@@ -112,8 +114,12 @@ colorscheme gruvbox
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = ''
+let g:airline_section_y = ''
+let g:airline_section_x = ''
+let g:airline_section_a = ''
 
 " nvim-comp
 set completeopt=menu,menuone,noselect

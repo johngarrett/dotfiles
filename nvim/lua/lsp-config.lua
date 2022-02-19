@@ -42,12 +42,11 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 
-local servers = { 'sourcekit', 'clangd' }
+local servers = { 'sourcekit', 'clangd', 'pylsp' }
 for _, lsp in pairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
         flags = {
-            -- This will be the default in neovim 0.7+
             debounce_text_changes = 150,
         },
         capabilities = capabilities,
