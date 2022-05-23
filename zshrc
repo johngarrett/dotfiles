@@ -56,3 +56,6 @@ export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/
 
 eval "$(jenv init -)"
 export PATH="$PATH:$HOME/.spicetify"
+
+# opam configuration
+[[ ! -r /Users/garrepi/.opam/opam-init/init.zsh ]] || source /Users/garrepi/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

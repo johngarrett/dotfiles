@@ -26,7 +26,7 @@ noremap <C-ScrollWheelLeft> 1zh
 noremap <C-ScrollWheelRight> 1zl
 
 " spell checking
-set spell spelllang=en_us
+"set spell spelllang=en_us
 
 set splitbelow
 set splitright
@@ -60,21 +60,30 @@ Plug 'StanAngeloff/php.vim'
 Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'mfussenegger/nvim-jdtls'
+
 "" Auto-Complete
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+"" Syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 "" vnsip
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 Plug 'lervag/vimtex'
 
+" format tables
+Plug 'godlygeek/tabular'
 
 " enhancements
 Plug 'tmhedberg/matchit' " improved matching with %
@@ -83,9 +92,12 @@ Plug 'tmhedberg/matchit' " improved matching with %
 Plug 'vim-airline/vim-airline' " bottom line of vim
 Plug 'edkolev/tmuxline.vim' " tmux theme
 Plug 'gruvbox-community/gruvbox' " vim theme
+
+" gdb debugging
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+
 call plug#end()
 
-" Plug 'vim-syntastic/syntastic' TODO: see if we need this
 " colors
 set t_Co=256
 
@@ -123,3 +135,10 @@ let g:airline_section_a = ''
 
 " nvim-comp
 set completeopt=menu,menuone,noselect
+
+" markdown
+let g:vim_markdown_folding_disabled = 1
+"" use vim-pandoc as a standalone
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
