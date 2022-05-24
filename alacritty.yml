@@ -9,19 +9,19 @@ dpi:
   x: 96.0
   y: 96.0
 font:
-  size: 9.5
+  size: 14
   use_thin_strokes: true
   use_anti_alias: true
   normal:
-    family: BlexMono Nerd Font
-    style: Medium 
+    family: Perplexed 
+    style: Normal 
 
   bold:
-    family: BlexMono Nerd Font
+    family: Perplexed
     style: Bold
  
   italic:
-    family: BlexMono Nerd Font
+    family: Perplexed
     style: Medium Italic
 
 # Colors (Tomorrow Night)
@@ -57,3 +57,13 @@ colors:
     magenta: '0xb77ee0'
     cyan:    '0x54ced6'
     white:   '0x282a2e' 
+
+# hide title bar
+window:
+  #decorations: transparent
+  decorations: none 
+  padding:
+    #y: 30
+    #x: 5
+    y: 0
+    x: 0

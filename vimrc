@@ -66,6 +66,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-jdtls'
+Plug '~/.vim/plugged/Jenkinsfile-vim-syntax'
 
 "" Auto-Complete
 Plug 'hrsh7th/cmp-nvim-lsp'
