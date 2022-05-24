@@ -42,7 +42,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 
-local servers = { 'sourcekit', 'clangd', 'pylsp' }
+local servers = { 'pylsp' }
 for _, lsp in pairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
@@ -52,3 +52,14 @@ for _, lsp in pairs(servers) do
         capabilities = capabilities,
     }
 end
+
+-- special configs such that I can disable certain file types
+lspconfig.ccls.setup {
+    on_attach = on_attach,
+    filetypes = {"c", "cpp" }
+}
+
+lspconfig.sourcekit.setup {
+    on_attach = on_attach,
+    filetypes = {"swift", "objective-c", "objective-cpp" }
+}
