@@ -25,6 +25,9 @@ set encoding=utf-8
 noremap <C-ScrollWheelLeft> 1zh
 noremap <C-ScrollWheelRight> 1zl
 
+" search pane
+map <C-P> :FZF <enter>
+
 " spell checking
 "set spell spelllang=en_us
 
@@ -61,6 +64,7 @@ Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " LSP
@@ -74,6 +78,13 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+
+" tabs
+Plug 'romgrk/barbar.nvim'
+
+" searching
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 "" Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 

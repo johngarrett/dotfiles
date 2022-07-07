@@ -61,7 +61,8 @@ colors:
 # hide title bar
 window:
   #decorations: transparent
-  decorations: none 
+  decorations: none
+  opacity: 0.95
   padding:
     #y: 30
     #x: 5

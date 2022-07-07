@@ -1,7 +1,5 @@
 -- This file should be linked to ~/.config/nvim/lua
 
-require("nvim-cmp")
-
 --- LSP STUFF
 --- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }

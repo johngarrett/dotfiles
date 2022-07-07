@@ -11,6 +11,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle popstas/zsh-command-time
 antigen bundle black7375/zsh-lazyenv
+antigen bundle robertzk/send.zsh
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -38,3 +39,9 @@ export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# AMSEverywhere stuff
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+export NODE_EXTRA_CA_CERTS=~/dev/charles-ssl-proxying-certificate.pem
+
+export FZF_DEFAULT_COMMAND='ag -g ""'
