@@ -1,4 +1,6 @@
-source ~/.antigen.zsh
+#source ~/.antigen.zsh
+source /usr/share/zsh/share/antigen.zsh
+
 
 antigen use oh-my-zsh
 
@@ -45,3 +47,11 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 export NODE_EXTRA_CA_CERTS=~/dev/charles-ssl-proxying-certificate.pem
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Doom Emacs
+#~/.emacs.d/bin
+
+# source pip packages (needed for cmakelint)
+export PATH=$PATH:~/Library/Python/3.9/bin
