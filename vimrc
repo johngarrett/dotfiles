@@ -19,6 +19,13 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+" hacky way to hide bottom bar
+set noruler
+set noshowmode
+set noshowcmd
+set laststatus=0
+autocmd BufRead,BufNewFile * set laststatus=0
+
 set encoding=utf-8
 
 " sideways scrolling
@@ -79,6 +86,12 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+" Snippets
+Plug 'rafamadriz/friendly-snippets'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+
 " tabs
 Plug 'romgrk/barbar.nvim'
 
@@ -87,12 +100,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 "" Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-"" vnsip
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-Plug 'lervag/vimtex'
 
 " format tables
 Plug 'godlygeek/tabular'
@@ -104,6 +111,8 @@ Plug 'tmhedberg/matchit' " improved matching with %
 Plug 'vim-airline/vim-airline' " bottom line of vim
 Plug 'edkolev/tmuxline.vim' " tmux theme
 Plug 'gruvbox-community/gruvbox' " vim theme
+Plug 'luisiacc/gruvbox-baby', {'branch': 'main'} " not good
+Plug 'jacoborus/tender.vim'
 
 " gdb debugging
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
@@ -132,7 +141,7 @@ endif
 set background=dark
 set laststatus=2
 set termguicolors
-colorscheme gruvbox
+colorscheme tender 
 
 
 " airline
