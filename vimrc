@@ -3,7 +3,7 @@ set sidescroll=1
 
 syntax on
 syntax enable
-set number
+set relativenumber number
 set ruler
 
 set hlsearch
@@ -62,28 +62,8 @@ map <space> /
 " plugs
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
-Plug 'segeljakt/vim-stealth'
-Plug 'keith/swift.vim'
-Plug 'TheCodedSelf/syntastic-swift'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'ap/vim-css-color'
-Plug 'vim-php/tagbar-phpctags.vim'
-Plug 'majutsushi/tagbar'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'JulesWang/css.vim'
-Plug 'edkolev/tmuxline.vim'
-Plug 'StanAngeloff/php.vim'
-Plug 'alvan/vim-php-manual'
-Plug 'rust-lang/rust.vim'
-Plug 'tmhedberg/matchit'
-Plug 'prabirshrestha/vim-lsp'
 call plug#end()
 
 " colors
@@ -119,38 +99,3 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 
-" syntastic
-filetype plugin on
-filetype plugin indent on
-let g:syntastic_aggregate_errors = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"" linters
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_exec = '/usr/local/bin/phpcs'
-
-let g:syntastic_python_checkers = ['pylint']
-let g:loaded_syntastic_cpp_cpplint_checker = 1
-
-let g:syntastic_swift_checkers = ['swiftlint', 'swiftpm']
-
-" SourceKit-LSP configuration
-if executable('sourcekit-lsp')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'sourcekit-lsp',
-        \ 'cmd': {server_info->['sourcekit-lsp']},
-        \ 'whitelist': ['swift'],
-        \ })
-endif
-
-autocmd FileType swift nnoremap <C-]> :LspDefinition<CR>
-
-" Required for operations modifying multiple buffers like rename.
-set hidden

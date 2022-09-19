@@ -3,6 +3,7 @@
 	name = John Garrett
 [core]
 	editor = vim
+    pager = delta
 [alias]
 	co = checkout
     c = commit
@@ -13,3 +14,16 @@
 	templatedir = ~/.git_template
 [pull]
 	rebase = false
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+[credential]
+	helper = cache --timeout=60480000

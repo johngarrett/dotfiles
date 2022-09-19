@@ -30,7 +30,7 @@ antigen apply
 
 . ~/.zsh_aliases
 
-export ANDROID_SDK_ROOT=/opt/Android/SDK
+export ANDROID_SDK_ROOT=/home/garrepi/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
@@ -42,3 +42,6 @@ export SWIFTENV_ROOT="$HOME/.swiftenv"
 export PATH="$SWIFTENV_ROOT/bin:$PATH"
 
 export THEOS=~/theos
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
