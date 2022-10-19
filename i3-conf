@@ -1,16 +1,10 @@
 set $mod Mod1
 
 # startup
-#exec_always --no-startup-id xrandr --output HDMI-0 --primary --left-of DVI-D-0 #--output DVI-D-0 --rotate left
 #exec --no-startup-id dunst -config ~/dotfiles/dunstrc
 exec --no-startup-id polybar
-#exec --no-startup-id polybar secondary
 #exec xmodmap ~/.Xmodmap
-exec --no-startup-id ssh-logs
-exec --no-startup-id lxsession
-
-# Font for window titles
-#font SF Mono Powerline Bold 10
+exec --no-startup-id feh --bg-fill ~/images/bg.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -39,7 +33,8 @@ bindsym Ctrl+$mod+space exec rofimoji
 client.focused #212121 #212121 #FFFFFF
 
 # start application launcher
-bindsym $mod+space exec rofi -show run -theme ~/dotfiles/rofi_material_theme.rasi -width 40 -lines 10
+bindsym $mod+space exec rofi -show run 
+#-theme ~/dotfiles/rofi_material_theme.rasi -width 40 -lines 10
 
 # move workspace
 bindsym Ctrl+$mod+Shift+Left move workspace to output left
@@ -52,13 +47,13 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # move focus
-bindsym $mod+Left focus h
-bindsym $mod+Down focus j
-bindsym $mod+Up focus k
-bindsym $mod+Right focus l
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # split in horizontal orientation
-bindsym $mod+h split b
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -119,10 +114,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window
 mode "resize" {
         # vim style resizing
-	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym j resize shrink height 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -161,5 +156,6 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# background image
-exec --no-startup-id feh --bg-fill ~/images/charlotte.jpg
+# brightness
+bindsym XF86MonBrightnessUp exec brightness-inc
+bindsym XF86MonBrightnessDown exec brightness-dec

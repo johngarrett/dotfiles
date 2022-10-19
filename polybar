@@ -38,7 +38,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = pulseaudio xkeyboard memory cpu temperature wlan eth date time 
+modules-right = backlight pulseaudio xkeyboard memory cpu temperature wlan eth date time 
 
 tray-position = right
 tray-padding = 2
@@ -60,7 +60,30 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
+b[module/backlight]
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+; Use the `/sys/class/backlight/.../actual-brightness` file
+; rather than the regular `brightness` file.
+; Defaults to true unless the specified card is an amdgpu backlight.
+; New in version 3.6.0
+use-actual-brightness = true
+
+; Enable changing the backlight with the scroll wheel
+; NOTE: This may require additional configuration on some systems. Polybar will
+; write to `/sys/class/backlight/${self.card}/brightness` which requires polybar
+; to have write access to that file.
+; DO NOT RUN POLYBAR AS ROOT. 
+; The recommended way is to add the user to the
+; `video` group and give that group write-privileges for the `brightness` file.
+; See the ArchWiki for more information:
+; https://wiki.archlinux.org/index.php/Backlight#ACPI
+; Default: false
+enable-scroll = trueorder-size = 4
 border-color = #00000000
 
 padding-left = 0
@@ -258,3 +281,27 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+[module/backlight]
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+; Use the `/sys/class/backlight/.../actual-brightness` file
+; rather than the regular `brightness` file.
+; Defaults to true unless the specified card is an amdgpu backlight.
+; New in version 3.6.0
+use-actual-brightness = true
+
+; Enable changing the backlight with the scroll wheel
+; NOTE: This may require additional configuration on some systems. Polybar will
+; write to `/sys/class/backlight/${self.card}/brightness` which requires polybar
+; to have write access to that file.
+; DO NOT RUN POLYBAR AS ROOT. 
+; The recommended way is to add the user to the
+; `video` group and give that group write-privileges for the `brightness` file.
+; See the ArchWiki for more information:
+; https://wiki.archlinux.org/index.php/Backlight#ACPI
+; Default: false
+enable-scroll = true

@@ -5,23 +5,20 @@ glyph_offset:
   y: 0
 env:
     TERM: xterm-256color
-dpi:
-  x: 96.0
-  y: 96.0
 font:
-  size: 14
-  use_thin_strokes: true
-  use_anti_alias: true
+  size: 7
+  AppleFontSmoothing: false
+  use_anti_alias: false 
   normal:
-    family: Perplexed 
-    style: Normal 
+    family: BlexMono Nerd Font 
+    style: Regular
 
   bold:
-    family: Perplexed
+    family: BlexMono Nerd Font
     style: Bold
  
   italic:
-    family: Perplexed
+    family: BlexMono Nerd Font 
     style: Medium Italic
 
 # Colors (Tomorrow Night)
@@ -62,7 +59,7 @@ colors:
 window:
   #decorations: transparent
   decorations: none
-  opacity: 0.95
+  opacity: 0.9
   padding:
     #y: 30
     #x: 5
