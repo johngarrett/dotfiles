@@ -17,6 +17,7 @@ map <C-Space> :Files<cr>
 " install vim plugged:
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'sheerun/vim-polyglot'
 call plug#end()
