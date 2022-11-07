@@ -12,6 +12,7 @@ set shiftwidth=4
 
 set background=dark
 colorscheme gruvbox
+map <C-Space> :Files<cr> 
 
 " install vim plugged:
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
