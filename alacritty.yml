@@ -10,7 +10,7 @@ dpi:
   y: 96.0
 font:
   size: 9.5
-  use_thin_strokes: true
+  AppleFontSmoothing: true
   use_anti_alias: true
   normal:
     family: BlexMono Nerd Font
