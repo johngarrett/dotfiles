@@ -136,11 +136,11 @@ bindsym $mod+r mode "resize"
 # remove status bar from windows
 for_window [class="^.*"] border pixel 0
 
-# gaps -- not feeling them rn -- feeling them rn 10/25
-gaps inner 9
-gaps horizontal 4
-gaps vertical -5
-smart_gaps on
+# gaps -- not feeling them rn -- feeling them rn 10/25 -- not feeling them rn 11/17/22
+#gaps inner 2
+#gaps horizontal 4
+#gaps vertical -5
+#smart_gaps on
 
 # no mouse stuff on hover
 focus_follows_mouse no
