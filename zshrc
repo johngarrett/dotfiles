@@ -9,7 +9,8 @@ antigen bundle command-not-found
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle popstas/zsh-command-time
-antigen bundle black7375/zsh-lazyenv
+antigen bundle robertzk/send.zsh
+antigen bundle lukechilds/zsh-nvm
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -25,6 +26,8 @@ antigen apply
 
 . ~/.zsh_aliases
 
+export NVM_LAZY_LOAD=true
+
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
@@ -39,9 +42,9 @@ export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/bin
 
 export THEOS=~/theos
-eval $(/opt/homebrew/bin/brew shellenv)
+#eval $(/opt/homebrew/bin/brew shellenv)
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#eval "$(jenv init -)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH=$PATH:/opt/riscv/bin
 
@@ -54,8 +57,10 @@ export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/
 
 
 
-eval "$(jenv init -)"
 export PATH="$PATH:$HOME/.spicetify"
 
 # opam configuration
-[[ ! -r /Users/garrepi/.opam/opam-init/init.zsh ]] || source /Users/garrepi/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+#[[ ! -r /Users/garrepi/.opam/opam-init/init.zsh ]] || source /Users/garrepi/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

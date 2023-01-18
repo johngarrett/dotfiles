@@ -53,48 +53,12 @@ let g:netrw_winsize = 25
 call plug#begin('~/.vim/plugged')
 
 " langugages
-Plug 'keith/swift.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'zacharied/lc3.vim'
-Plug 'StanAngeloff/php.vim'
-Plug 'JulesWang/css.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'mfussenegger/nvim-jdtls'
-
-"" Auto-Complete
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-"" Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-"" vnsip
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-Plug 'lervag/vimtex'
-
-" format tables
-Plug 'godlygeek/tabular'
-
-" enhancements
-Plug 'tmhedberg/matchit' " improved matching with %
 
 " themes
 Plug 'vim-airline/vim-airline' " bottom line of vim
 Plug 'edkolev/tmuxline.vim' " tmux theme
 Plug 'gruvbox-community/gruvbox' " vim theme
-
-" gdb debugging
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 
 call plug#end()
 
