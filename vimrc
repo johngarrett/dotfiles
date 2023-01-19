@@ -3,41 +3,50 @@ set sidescroll=1
 
 syntax on
 syntax enable
-set number
+set relativenumber number
 set ruler
 
 set hlsearch
-set smartcase " switch to case-sensitive search when uppercase letter is present
 set nowrap
-set cursorline " highlight current line
-set relativenumber 
-set title " change window title on file
 
 set smarttab
 set expandtab
-
 set tabstop=4
 set shiftwidth=4
 
 set encoding=utf-8
+autocmd Filetype f90 setlocal tabstop=-2
 
 " sideways scrolling
 noremap <C-ScrollWheelLeft> 1zh
 noremap <C-ScrollWheelRight> 1zl
 
-" spell checking
-"set spell spelllang=en_us
+" tab navigaiton
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+
+" splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
 
 " persistent undo
 try
-    set undodir=~/.cache/nvim/undodir
+    set undodir=~/.vim_runtime/temp_dirs/undodir
     set undofile
 catch
-    echoerr 'Unable to set undo directory'
 endtry
+
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
 
 " directory management
 let g:netrw_banner = 0
@@ -46,20 +55,15 @@ let g:netrw_browse_split = 2
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 :com E Explore
-
 :com Bo browse oldfiles " ex: vsp #<18
+
+map <space> /
 
 " plugs
 call plug#begin('~/.vim/plugged')
 
-" langugages
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" themes
-Plug 'vim-airline/vim-airline' " bottom line of vim
-Plug 'edkolev/tmuxline.vim' " tmux theme
-Plug 'gruvbox-community/gruvbox' " vim theme
-
+Plug 'vim-airline/vim-airline'
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 " colors
@@ -72,6 +76,8 @@ endif
 if (has('termguicolors'))
   set termguicolors
 endif
+
+let g:tagbar_phpctags_bin='PATH_TO_phpctags'
 
 " tmux colors
 if exists('+termguicolors')
@@ -90,19 +96,6 @@ colorscheme gruvbox
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
-let g:airline_section_z = ''
-let g:airline_section_y = ''
-let g:airline_section_x = ''
-let g:airline_section_a = ''
 
-" nvim-comp
-set completeopt=menu,menuone,noselect
-
-" markdown
-let g:vim_markdown_folding_disabled = 1
-"" use vim-pandoc as a standalone
-augroup pandoc_syntax
-    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-augroup END
