@@ -1,3 +1,5 @@
+let g:coq_settings = { 'auto_start': 'shut-up' } " must be before require('coq')
+
 lua require('plugins')
 lua require('lsp')
 
@@ -17,7 +19,6 @@ colorscheme gruvbox
 map <C-Space> :Files<cr> 
 
 let g:coq_settings = { 'display.icons.mode': 'none' }
-let g:coq_settings = { 'auto_start': 'shut-up' }
 let g:coq_settings = { 'keymap.manual_complete': '' } " allow for C-Space :Files map
 
 " install vim plugged:

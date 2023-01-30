@@ -1,4 +1,6 @@
-local lspconfig = require'lspconfig'
+local lspconfig = require 'lspconfig'
+local coq = require 'coq'
+
 lspconfig.ccls.setup {
   init_options = {
     compilationDatabaseDirectory = "build";
@@ -11,5 +13,6 @@ lspconfig.ccls.setup {
   }
 }
 
-require'lspconfig'.ccls.setup{}
+lspconfig.ccls.setup(coq.lsp_ensure_capabilities())
+
 require'lspconfig'.tsserver.setup {}
