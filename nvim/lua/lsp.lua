@@ -13,6 +13,8 @@ lspconfig.ccls.setup {
   }
 }
 
+lspconfig.svls.setup {}
+
 lspconfig.ccls.setup(coq.lsp_ensure_capabilities())
 
 require'lspconfig'.tsserver.setup {}
