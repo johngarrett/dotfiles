@@ -1,4 +1,5 @@
 lua require('plugins')
+" lua require('lsp')
 
 set mouse=a
 
@@ -13,12 +14,11 @@ set shiftwidth=4
 set background=dark
 colorscheme gruvbox
 
-map <C-Space> :Files<cr> 
 
 " disable icons in coq_nvim
 let g:coq_settings = { 'display.icons.mode': 'none' }
 let g:coq_settings = { 'auto_start': 'shut-up' }
-let g:coq_settings = { 'manual_complete': 'null' }
+" let g:coq_settings = { 'manual_complete': 'null' }
 
 " install vim plugged:
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -28,3 +28,5 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 call plug#end()
+
+map <C-Space> :Files<cr> 
