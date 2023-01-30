@@ -11,7 +11,11 @@ return require('packer').startup(function(use)
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end 
   }
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  -- completion
+  use { 'ms-jpq/coq_nvim', branch = 'coq' }
+  use { 'ms-jpq/coq.artifacts', branch = 'artifacts'}
   -- latex TODO
   -- use 'lervag/vimtex'
-  -- use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
 end)
