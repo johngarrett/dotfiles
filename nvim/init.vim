@@ -2,6 +2,7 @@ let g:coq_settings = { 'auto_start': 'shut-up' } " must be before require('coq')
 
 lua require('plugins')
 lua require('lsp')
+lua require('treesitter')
 
 set mouse=a
 

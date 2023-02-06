@@ -16,6 +16,17 @@ return require('packer').startup(function(use)
   -- completion
   use { 'ms-jpq/coq_nvim', branch = 'coq' }
   use { 'ms-jpq/coq.artifacts', branch = 'artifacts'}
+  -- java LSP
+  use 'mfussenegger/nvim-jdtls'
   -- latex TODO
   -- use 'lervag/vimtex'
+  
+  -- treesitter for syntax highlighting
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
+  }
 end)
