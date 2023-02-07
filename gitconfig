@@ -2,7 +2,7 @@
 	email = jacgarrett18@gmail.com
 	name = John Garrett
 [core]
-	editor = vim
+	editor = nvim
     pager = delta
 [alias]
 	co = checkout

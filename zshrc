@@ -45,3 +45,5 @@ export THEOS=~/theos
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
