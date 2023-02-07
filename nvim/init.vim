@@ -1,4 +1,8 @@
+let g:coq_settings = { 'auto_start': 'shut-up' } " must be before require('coq')
+
 lua require('plugins')
+lua require('lsp')
+lua require('treesitter')
 
 set mouse=a
 
@@ -15,13 +19,14 @@ colorscheme gruvbox
 
 map <C-Space> :Files<cr> 
 
-" disable icons in coq_nvim
-let g:coq_settings = { "display.icons.mode": 'none', "auto_start": 'shut-up', "keymap.manual_complete_insertion_only": v:true }
+let g:coq_settings = { 'display.icons.mode': 'none' }
+let g:coq_settings = { 'keymap.manual_complete': '' } " allow for C-Space :Files map
 
 " install vim plugged:
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 call plug#end()
+
