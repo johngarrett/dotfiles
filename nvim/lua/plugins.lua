@@ -19,8 +19,7 @@ return require('packer').startup(function(use)
   use { 'ms-jpq/coq.artifacts', branch = 'artifacts'}
   -- java LSP
   use 'mfussenegger/nvim-jdtls'
-  -- latex TODO
-  -- use 'lervag/vimtex'
+  use 'lervag/vimtex'
   
   -- treesitter for syntax highlighting
   use {
