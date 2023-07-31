@@ -15,6 +15,8 @@ install tmux
 
 `ln -s /Users/johngarrett/dotfiles/alacritty.yml /Users/johngarrett/.config/alacritty.yml`
 
+`ln -s /Users/johngarrett/dotfiles/tmux.conf /Users/johngarrett/.tmux.conf`
+
 install BlexMono font from folder
 
 install antigen
