@@ -26,3 +26,14 @@ install antigen
 
 ` ln -s /Users/johngarrett/dotfiles/nvim ~/.config/`
 
+install vim plug
+`curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+`:PlugInstall`
+
+install packer
+
+`git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
+
+ `:PackerInstall`

@@ -6,7 +6,7 @@ antigen bundle z
 antigen bundle git
 antigen bundle pip
 antigen bundle command-not-found
-antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle popstas/zsh-command-time
 antigen bundle robertzk/send.zsh
