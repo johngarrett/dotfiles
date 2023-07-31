@@ -24,41 +24,41 @@ antigen theme bira
 antigen cache-gen
 antigen apply
 
-. ~/.zsh_aliases
-
 export NVM_LAZY_LOAD=true
 
-export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+#export ANDROID_SDK_ROOT=~/Library/Android/sdk
+#export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+#export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+#export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+#export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
-export PATH="$PATH:/home/garrepi/packages/sourcekit-lsp/.build/debug/"
+#export PATH="$PATH:/home/garrepi/packages/sourcekit-lsp/.build/debug/"
 
-export SWIFTENV_ROOT="$HOME/.swiftenv"
-export PATH="$SWIFTENV_ROOT/bin:$PATH"
+#export SWIFTENV_ROOT="$HOME/.swiftenv"
+#export PATH="$SWIFTENV_ROOT/bin:$PATH"
+
+export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/bin
 
-export THEOS=~/theos
+#export THEOS=~/theos
 #eval $(/opt/homebrew/bin/brew shellenv)
-export PATH="$HOME/.jenv/bin:$PATH"
+#export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH=$PATH:/opt/riscv/bin
+#export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+#export PATH=$PATH:/opt/riscv/bin
 
 export VISUAL=nvim
 export EDITOR=nvim
 
-export PATH=$PATH:/usr/local/lib:/usr/local/include:/Library/TeX/texbin
+#export PATH=$PATH:/usr/local/lib:/usr/local/include:/Library/TeX/texbin
 
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
 
 
-export PATH="$PATH:$HOME/.spicetify"
-export PATH="$PATH:$HOME/.local/share/firenvim"
+#export PATH="$PATH:$HOME/.spicetify"
+#export PATH="$PATH:$HOME/.local/share/firenvim"
 
 # opam configuration
 #[[ ! -r /Users/garrepi/.opam/opam-init/init.zsh ]] || source /Users/garrepi/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
