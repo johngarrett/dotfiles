@@ -22,3 +22,7 @@ install antigen
 
 `ln -s /Users/johngarrett/dotfiles/zshrc /Users/johngarrett/.zshrc`
 
+# neovim
+
+` ln -s /Users/johngarrett/dotfiles/nvim ~/.config/`
+
