@@ -9,6 +9,12 @@ install neovim
 install tmux
 `brew install tmux`
 
+install fzf
+`brew install fzf`
+
+install fzf keybindings
+`$(brew --prefix)/opt/fzf/install`
+
 # Gen
 
 `mkdir ~/.config`
