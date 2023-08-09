@@ -8,6 +8,7 @@ antigen bundle pip
 antigen bundle command-not-found
 antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
 antigen bundle popstas/zsh-command-time
 antigen bundle robertzk/send.zsh
 antigen bundle lukechilds/zsh-nvm
