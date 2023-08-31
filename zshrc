@@ -56,6 +56,11 @@ export EDITOR=nvim
 #export PATH=$PATH:/usr/local/lib:/usr/local/include:/Library/TeX/texbin
 
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+export PATH=$PATH:~/script
+export PATH=$PATH:~/bin
+
+# colorize output for ctest
+export GTEST_COLOR=1
 
 
 
@@ -69,3 +74,9 @@ export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NODE_EXTRA_CA_CERTS=~/bundle.pem
+
+gch() {
+ git checkout “$(git branch — all | fzf| tr -d ‘[:space:]’)”
+}
