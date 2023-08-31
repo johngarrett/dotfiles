@@ -1,6 +1,6 @@
 vim.keymap.set('n', '<leader>fw', ':Rg <CR>', { silent = true })
 vim.keymap.set('n', '<leader>ff', ':Files <CR>', { silent = true })
-vim.keymap.set('n', '<leader>ff', ':GFiles <CR>', { silent = true })
+vim.keymap.set('n', '<leader>fg', ':GFiles <CR>', { silent = true })
 vim.keymap.set('n', '<leader>fb', ':Buf <CR>', { silent = true })
 vim.keymap.set('n', '<leader>fa', ':Marks <CR>', { silent = true })
 --vim.keymap.set('n', '<leader>wf', ':Files -q <C-R><C-W><CR>', { silent = true })
