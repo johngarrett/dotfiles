@@ -1,5 +1,16 @@
 require("typescript-tools").setup {
-  --on_attach = function() ... end,
+  on_attach = function(client, bufnr)
+
+    -- TODO: there's a better way to do this lol
+    vim.keymap.set({ "n", "v" }, "gd", vim.lsp.buf.definition, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "gr", vim.lsp.buf.references, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "[d", vim.diagnostic.goto_prev { float = { border = "rounded" } }, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "]d", vim.diagnostic.goto_next { float = { border = "rounded" } }, { buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "<leader>q", vim.diagnostic.setloclist, { buffer = bufnr })
+  end,
   --handlers = { ... },
   settings = {
     -- spawn additional tsserver instance to calculate diagnostics on it
