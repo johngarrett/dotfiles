@@ -71,7 +71,24 @@ local plugins = {
     config = function()
       require "custom.configs.ts-tools"
     end,
-  }
+  },
+  {
+    "francoiscabrol/ranger.vim",
+    lazy = false,
+    dependencies = {"rbgrouleff/bclose.vim"},
+    config = function()
+      require "custom.configs.ranger"
+    end,
+  },
+  -- multiline LSP errors
+  {
+    "ErichDonGubler/lsp_lines.nvim",
+    lazy = false,
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  },
 }
 
 return plugins
