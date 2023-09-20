@@ -16,6 +16,12 @@ M.ranger = {
   }
 }
 
+M.fuzzy_search = {
+  n = {
+    ["<leader>fs"] = {':FuzzySearch <CR>'}
+  }
+}
+
 M.ts_tools = {
   n = {
     ["gd"] = {

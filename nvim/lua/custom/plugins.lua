@@ -78,6 +78,10 @@ local plugins = {
     lazy = false,
     dependencies = {"rbgrouleff/bclose.vim"},
   },
+  {
+    "ggvgc/vim-fuzzysearch",
+    lazy = false
+  }
   -- multiline LSP errors
   -- SOOOO fucking annoying
   --{
