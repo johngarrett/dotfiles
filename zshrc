@@ -80,3 +80,7 @@ export NODE_EXTRA_CA_CERTS=~/bundle.pem
 gch() {
  git checkout “$(git branch — all | fzf| tr -d ‘[:space:]’)”
 }
+
+#### Added by green-restore install-tools
+autoload -Uz compinit && compinit
+####

@@ -6,6 +6,11 @@ local plugins = {
     enabled = false
   },
   {
+    -- disable auto pairs, it's causing conflicts on ]d
+    "windwp/nvim-autopairs",
+    enabled = false
+  },
+  {
     "neovim/nvim-lspconfig",
     -- TODO
     --dependencies = {
@@ -53,10 +58,7 @@ local plugins = {
       "junegunn/fzf",
       lazy = false,
       build = ":call fzf#install()",
-    },
-    config = function()
-      require "custom.configs.fzf"
-    end,
+    }
   },
   -- align columns of text!
   {
@@ -66,7 +68,6 @@ local plugins = {
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
     lazy = false,
     config = function()
       require "custom.configs.ts-tools"
@@ -76,19 +77,17 @@ local plugins = {
     "francoiscabrol/ranger.vim",
     lazy = false,
     dependencies = {"rbgrouleff/bclose.vim"},
-    config = function()
-      require "custom.configs.ranger"
-    end,
   },
   -- multiline LSP errors
-  {
-    "ErichDonGubler/lsp_lines.nvim",
-    lazy = false,
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      require("lsp_lines").setup()
-    end,
-  },
+  -- SOOOO fucking annoying
+  --{
+  --  "ErichDonGubler/lsp_lines.nvim",
+  --  lazy = false,
+  --  dependencies = { "neovim/nvim-lspconfig" },
+  --  config = function()
+  --    require("lsp_lines").setup()
+  --  end,
+  --},
 }
 
 return plugins

@@ -24,7 +24,7 @@ font:
     style: Medium Italic
   offset:
     x: 0
-    y: 3
+    y: 4
 
 # Colors (Tomorrow Night)
 colors:
@@ -68,4 +68,4 @@ window:
     #x: 5
     y: 0
     x: 0
-  opacity: 0.94
+  opacity: 1
