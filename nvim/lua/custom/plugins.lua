@@ -81,7 +81,9 @@ local plugins = {
   {
     "ggvgc/vim-fuzzysearch",
     lazy = false
-  }
+  },
+  { "chrisgrieser/nvim-spider", lazy = true },
+
   -- multiline LSP errors
   -- SOOOO fucking annoying
   --{
