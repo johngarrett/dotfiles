@@ -8,8 +8,33 @@ M.fzf = {
     ["<leader>fb"] = {':Buf <CR>'},
     ["<leader>fa"] = {':Marks <CR>'},
     ["<leader>wf"] = {':Rg <C-R><C-W><CR>'},
+    ["<leader>fts"] = {
+      function()
+      vim.fn['fzf#run']({
+          source = 'find . -type f -name "*.ts" -not -path "*/dist/*" -not -path "*/node_modules*"',
+        --  window = {
+        --    width = "0.9",
+        --    height = "0.9",
+        --  }
+         -- left = "10%",
+         -- right = "10%",
+         -- down = "~60%"
+      })
+      end,
+      'find typescript file'
+    },
+    ["<leader>fc"] = {
+      function()
+      vim.fn['fzf#run']({
+          source = 'find . -type f -name "*.cpp" -o -name "*.hpp" -not -path "*/build/*" -not -path "*/third_party/*"',
+          down = "~60%"
+      })
+      end,
+      'find cpp/hpp file'
+    }
   }
 }
+
 M.ranger = {
   n = {
     ['<leader>fr'] = {':Ranger <CR>'}
@@ -18,7 +43,7 @@ M.ranger = {
 
 M.fuzzy_search = {
   n = {
-    ["<leader>fs"] = {':FuzzySearch <CR>'}
+    ["<leader>fs"] = {':FuzzySearch <CR>'},
   }
 }
 
