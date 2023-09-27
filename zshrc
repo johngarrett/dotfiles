@@ -84,3 +84,5 @@ gch() {
 #### Added by green-restore install-tools
 autoload -Uz compinit && compinit
 ####
+
+export PATH=$PATH:/Users/garrepi/Library/Python/3.9/bin

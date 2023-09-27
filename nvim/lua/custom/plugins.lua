@@ -83,6 +83,13 @@ local plugins = {
     lazy = false
   },
   { "chrisgrieser/nvim-spider", lazy = true },
+ -- {
+ --   'glacambre/firenvim',
+ --   lazy = not vim.g.started_by_firenvim,
+ --   build = function()
+ --       vim.fn["firenvim#install"](0)
+ --   end
+ --}
 
   -- multiline LSP errors
   -- SOOOO fucking annoying
