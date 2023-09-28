@@ -83,6 +83,13 @@ local plugins = {
     lazy = false
   },
   { "chrisgrieser/nvim-spider", lazy = true },
+  {
+    "alepez/vim-gtest",
+    lazy = false,
+    config = function()
+      require "custom.configs.vim_gtest"
+    end,
+  }
  -- {
  --   'glacambre/firenvim',
  --   lazy = not vim.g.started_by_firenvim,
