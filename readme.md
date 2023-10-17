@@ -15,6 +15,18 @@ install fzf
 install fzf keybindings
 `$(brew --prefix)/opt/fzf/install`
 
+install easy move + resize
+```bash
+brew install --cask easy-move-plus-resize
+```
+
+install ranger
+`brew install ranger`
+
+install chrome
+`brew install --cask google-chrome`
+
+install [cursorcerer](https://doomlaser.com/cursorcerer-hide-your-cursor-at-will/)
 # Gen
 
 `mkdir ~/.config`
@@ -30,8 +42,12 @@ install antigen
 
 `ln -s /Users/garrepi/dotfiles/zshrc /Users/garrepi/.zshrc`
 
-# neovim
+install nvm
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+```
 
+# neovim
 
 install nvchad
 
