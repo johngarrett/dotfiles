@@ -89,7 +89,7 @@ local plugins = {
     config = function()
       require "custom.configs.vim_gtest"
     end,
-  }
+  },
  -- {
  --   'glacambre/firenvim',
  --   lazy = not vim.g.started_by_firenvim,
@@ -108,6 +108,13 @@ local plugins = {
   --    require("lsp_lines").setup()
   --  end,
   --},
+  {
+    "lewis6991/gitsigns.nvim",
+    lazy = false,
+    config = function()
+      require "custom.configs.gitsigns"
+    end,
+  }
 }
 
 return plugins
