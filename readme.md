@@ -15,33 +15,49 @@ install fzf
 install fzf keybindings
 `$(brew --prefix)/opt/fzf/install`
 
+install easy move + resize
+```bash
+brew install --cask easy-move-plus-resize
+```
+
+install ranger
+`brew install ranger`
+
+install chrome
+`brew install --cask google-chrome`
+
+install [cursorcerer](https://doomlaser.com/cursorcerer-hide-your-cursor-at-will/)
 # Gen
 
 `mkdir ~/.config`
 
-`ln -s /Users/johngarrett/dotfiles/alacritty.yml /Users/johngarrett/.config/alacritty.yml`
+`ln -s /Users/garrepi/dotfiles/alacritty.yml /Users/garrepi/.config/alacritty.yml`
 
-`ln -s /Users/johngarrett/dotfiles/tmux.conf /Users/johngarrett/.tmux.conf`
+`ln -s /Users/garrepi/dotfiles/tmux.conf /Users/garrepi/.tmux.conf`
 
 install BlexMono font from folder
 
 install antigen
 `curl -L git.io/antigen > ~/antigen.zsh`
 
-`ln -s /Users/johngarrett/dotfiles/zshrc /Users/johngarrett/.zshrc`
+`ln -s /Users/garrepi/dotfiles/zshrc /Users/garrepi/.zshrc`
+
+install nvm
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+```
 
 # neovim
 
-` ln -s /Users/johngarrett/dotfiles/nvim ~/.config/`
+install nvchad
 
-install vim plug
-`curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+```
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+```
 
-`:PlugInstall`
+```
+rm ~/.config/nvim/lua/custom
 
-install packer
+ln -s ~/dotfiles/nvim/lua/custom ~/.config/nvim/lua
+```
 
-`git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
-
- `:PackerInstall`
