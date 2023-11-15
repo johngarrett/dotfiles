@@ -86,3 +86,5 @@ autoload -Uz compinit && compinit
 ####
 
 export PATH=$PATH:/Users/garrepi/Library/Python/3.9/bin
+
+alias nr="npm run"
