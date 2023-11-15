@@ -52,13 +52,22 @@ local plugins = {
     "mfussenegger/nvim-lint"
   },
   {
-    "junegunn/fzf.vim",
+    'vijaymarupudi/nvim-fzf-commands',
+    dependencies = { 'vijaymarupudi/nvim-fzf' },
     lazy = false,
+    --config = function()
+    --  require "custom.config.fzf"
+    --end
+  },
+  {
+    -- need the :Rg functionality
+    'junegunn/fzf.vim',
     dependencies = {
       "junegunn/fzf",
       lazy = false,
-      build = ":call fzf#install()",
-    }
+      build = ":call fzf#install()"
+    },
+    lazy = false
   },
   -- align columns of text!
   {

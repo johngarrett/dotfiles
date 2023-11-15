@@ -2,35 +2,31 @@ local M = {}
 
 M.fzf = {
   n = {
-    ["<leader>fw"] = {':Rg <CR>'},
-    ["<leader>ff"] = {':Files <CR>'},
-    ["<leader>fg"] = {':GFiles <CR>'},
-    ["<leader>fb"] = {':Buf <CR>'},
-    ["<leader>fa"] = {':Marks <CR>'},
-    ["<leader>wf"] = {':Rg <C-R><C-W><CR>'},
-    ["<leader>fts"] = {
+    ["<leader>fw"] = { ':Rg <CR>' },
+    ["<leader>ff"] = {
       function()
-      vim.fn['fzf#run']({
-          source = 'find . -type f -name "*.ts" -not -path "*/dist/*" -not -path "*/node_modules*"',
-        --  window = {
-        --    width = "0.9",
-        --    height = "0.9",
-        --  }
-         -- left = "10%",
-         -- right = "10%",
-         -- down = "~60%"
-      })
+        require('fzf-commands').files()
+      end
+    },
+    ["<leader>fg"] = {':GFiles <CR>'},
+    ["<leader>fb"] = {
+      function()
+        require('fzf-commands').bufferpicker()
+      end
+    },
+    ["<leader>ft"] = {
+      function()
+        require('fzf-commands').files({
+          command_flags = '--type f -e ts -E "*/dist/*" -E "node_modules*"'
+        })
       end,
-      'find typescript file'
     },
     ["<leader>fc"] = {
       function()
-      vim.fn['fzf#run']({
-          source = 'find . -type f -name "*.cpp" -o -name "*.hpp" -not -path "*/build/*" -not -path "*/third_party/*"',
-          down = "~60%"
-      })
+        require('fzf-commands').files({
+          command_flags = '--type f -e cpp -e hpp -e c -e h -E "third_party*" -E "PrivateFrameworks"'
+        })
       end,
-      'find cpp/hpp file'
     }
   }
 }
