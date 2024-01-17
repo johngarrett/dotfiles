@@ -3,6 +3,14 @@ local M = {}
 M.fzf = {
   n = {
     ["<leader>fw"] = { ':Rg <CR>' },
+    ["<leader>fz"] = {
+      function()
+      vim.cmd([[
+      command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+      ]])
+      end,
+      "foo"
+    },
     ["<leader>ff"] = {
       function()
         require('fzf-commands').files()
@@ -11,13 +19,13 @@ M.fzf = {
     ["<leader>fg"] = {':GFiles <CR>'},
     ["<leader>fb"] = {
       function()
-        require('fzf-commands').bufferpicker()
+        require('fzf-commands').bufferpicker2()
       end
     },
     ["<leader>ft"] = {
       function()
         require('fzf-commands').files({
-          command_flags = '--type f -e ts -E "*/dist/*" -E "node_modules*"'
+          command_flags = '--type f -e ts -E "*/dist/*" -E "**/node_modules/*"'
         })
       end,
     },

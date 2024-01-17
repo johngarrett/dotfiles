@@ -61,6 +61,7 @@ colors:
     white:   '0x282a2e' 
       # hide title bar
 window:
+  option_as_alt: Both
   #decorations: transparent
   decorations: none
   padding:

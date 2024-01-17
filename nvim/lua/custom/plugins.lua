@@ -123,6 +123,22 @@ local plugins = {
     config = function()
       require "custom.configs.gitsigns"
     end,
+  },
+  -- DIDNT WORK
+  --{
+  --  "dmmulroy/tsc.nvim",
+  --  lazy = false,
+  --  config = function()
+  --    require "custom.configs.tsc"
+  --  end,
+
+  --},
+  {
+    'akinsho/git-conflict.nvim',
+    lazy = false,
+    config = function()
+      require('git-conflict').setup()
+    end
   }
 }
 
