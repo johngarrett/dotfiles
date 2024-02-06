@@ -29,16 +29,11 @@ yellow = "0xe6c547"
 background = "0x1d1f21"
 foreground = "0xc5c8c6"
 
-[dpi]
-x = 96.0
-y = 96.0
-
 [env]
 TERM = "xterm-256color"
 
 [font]
 size = 13
-use_anti_alias = true
 
 [font.bold]
 family = "BlexMono Nerd Font"
@@ -55,10 +50,6 @@ style = "Regular"
 [font.offset]
 x = 0
 y = 4
-
-[glyph_offset]
-x = 0
-y = 0
 
 [window]
 decorations = "none"
