@@ -67,3 +67,5 @@ export PATH="$PATH:$HOME/.local/share/firenvim"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias python=python3.11
