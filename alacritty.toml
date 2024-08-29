@@ -36,15 +36,15 @@ TERM = "xterm-256color"
 size = 13
 
 [font.bold]
-family = "BlexMono Nerd Font"
+family = "BlexMono Nerd Font Propo"
 style = "Bold"
 
 [font.italic]
-family = "BlexMono Nerd Font"
+family = "BlexMono Nerd Font Propo"
 style = "Medium Italic"
 
 [font.normal]
-family = "BlexMono Nerd Font"
+family = "BlexMono Nerd Font Propo"
 style = "Regular"
 
 [font.offset]

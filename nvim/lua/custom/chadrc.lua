@@ -2,8 +2,8 @@
 local M = {}
 
  M.ui = {
-  theme_toggle = { 'ayu_dark', 'gruvbox' },
-  theme = 'gruvbox',
+  theme_toggle = { 'bearded-arc', 'bearded-arc' },
+  theme = 'bearded-arc',
   transparency = false
 }
 

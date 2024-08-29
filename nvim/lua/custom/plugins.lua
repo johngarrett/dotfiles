@@ -3,7 +3,7 @@ local plugins = {
   {
     -- disable telescope for fzf (its much better)
     "nvim-telescope/telescope.nvim",
-    enabled = false
+    enabled = true
   },
   {
     -- disable auto pairs, it's causing conflicts on ]d
