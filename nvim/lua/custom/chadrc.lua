@@ -2,8 +2,8 @@
 local M = {}
 
  M.ui = {
-  theme_toggle = { 'bearded-arc', 'bearded-arc' },
-  theme = 'bearded-arc',
+  theme_toggle = { 'chadracula', 'chadracula' },
+  theme = 'chadracula',
   transparency = false
 }
 

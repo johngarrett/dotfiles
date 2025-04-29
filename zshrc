@@ -11,7 +11,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle popstas/zsh-command-time
 antigen bundle robertzk/send.zsh
-antigen bundle lukechilds/zsh-nvm
+#antigen bundle lukechilds/zsh-nvm
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -25,7 +25,7 @@ antigen theme bira
 antigen cache-gen
 antigen apply
 
-export NVM_LAZY_LOAD=true
+#export NVM_LAZY_LOAD=true
 
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
@@ -89,4 +89,8 @@ export PATH=$PATH:/Users/garrepi/Library/Python/3.9/bin
 
 alias nr="npm run"
 
+eval "$(nodenv init - zsh)"
 source ~/.work/zshrc
+
+source ~/dotfiles/gco_completion.sh
+

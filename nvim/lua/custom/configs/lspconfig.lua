@@ -11,14 +11,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- show diagnostics  in window
-vim.diagnostic.config({
-  virtual_text = false,
-  update_in_insert = false,
-  underline = false,
-  signs = true,
-})
-
 -- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
 
