@@ -93,4 +93,3 @@ eval "$(nodenv init - zsh)"
 source ~/.work/zshrc
 
 source ~/dotfiles/gco_completion.sh
-

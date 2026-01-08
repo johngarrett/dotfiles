@@ -3,16 +3,47 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 local servers = { "clangd", "lua_ls" }
-
 for _, lsp in ipairs(servers) do
+  local settings = {}
+
+  -- recognize vim as a global for the lua LSP
+  if lsp == "lua_ls" then
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" }
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),
+          checkThirdParty = false,
+        },
+      }
+    }
+  end
+
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = settings,
   }
 end
 
 -- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
+
+-- Enable signature help popup while typing
+--vim.api.nvim_create_autocmd("LspAttach", {
+--  callback = function(args)
+--    vim.api.nvim_create_autocmd("CursorHoldI", {
+--      buffer = args.buf,
+--      callback = function()
+--        vim.lsp.buf.signature_help()
+--      end,
+--    })
+--  end,
+--})
+
+
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
