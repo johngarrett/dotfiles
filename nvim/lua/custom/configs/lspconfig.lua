@@ -1,7 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
+local on_init = require("plugins.configs.lspconfig").on_init
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
 local servers = { "clangd", "lua_ls" }
 for _, lsp in ipairs(servers) do
   local settings = {}
@@ -21,11 +21,14 @@ for _, lsp in ipairs(servers) do
     }
   end
 
-  lspconfig[lsp].setup {
+  vim.lsp.config(lsp, {
+    on_init = on_init,
     on_attach = on_attach,
     capabilities = capabilities,
     settings = settings,
-  }
+  })
+
+  vim.lsp.enable(lsp)
 end
 
 -- Show line diagnostics automatically in hover window
@@ -73,8 +76,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
 --vim.cmd [[autocmd CursorHold * lua vim.lsp.util.open_floating_preview({}, {focus=false})]]
 
-local signs = { Error = "", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+-- Configure diagnostic signs using the modern API
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    }
+  }
+})
