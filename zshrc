@@ -75,18 +75,17 @@ export GTEST_COLOR=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NODE_EXTRA_CA_CERTS=~/bundle.pem
 
 gch() {
  git checkout “$(git branch — all | fzf| tr -d ‘[:space:]’)”
 }
 
 #### Added by green-restore install-tools
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 ####
 
 export PATH=$PATH:/Users/garrepi/Library/Python/3.9/bin
 
 alias nr="npm run"
 
-source ~/.work/zshrc
+#source ~/.work/zshrc
