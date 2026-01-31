@@ -82,14 +82,21 @@ gch() {
 }
 
 #### Added by green-restore install-tools
-autoload -Uz compinit && compinit
+#autoload -Uz compinit && compinit
 ####
 
-export PATH=$PATH:/Users/garrepi/Library/Python/3.9/bin
+#export PATH=$PATH:/Users/garrepi/Library/Python/3.9/bin
 
 alias nr="npm run"
 
-eval "$(nodenv init - zsh)"
-source ~/.work/zshrc
+#eval "$(nodenv init - zsh)"
+#source ~/.work/zshrc
 
-source ~/dotfiles/gco_completion.sh
+#source ~/dotfiles/gco_completion.sh
+
+# bun completions
+[ -s "/Users/garrepi/.bun/_bun" ] && source "/Users/garrepi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
