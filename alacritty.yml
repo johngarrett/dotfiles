@@ -8,10 +8,10 @@ env:
 font:
   size: 7
   AppleFontSmoothing: false
-  use_anti_alias: false 
+  use_anti_alias: true 
   normal:
     family: BlexMono Nerd Font 
-    style: Regular
+    style: Medium
 
   bold:
     family: BlexMono Nerd Font
