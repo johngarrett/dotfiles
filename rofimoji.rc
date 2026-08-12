@@ -1,4 +1,3 @@
-insert-with-clipboard = true
 files = [math, emojis, mathematical_alphanumeric_symbols, mathematical_operators]
 skin-tone = neutral
 --rofi-args = -theme ~/dotfiles/rofi_material_theme.rasi -width 40 -lines 10
