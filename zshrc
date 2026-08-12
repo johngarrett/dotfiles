@@ -1,8 +1,9 @@
-source ~/antigen.zsh
+#source ~/.antigen.zsh
+source /usr/share/zsh/share/antigen.zsh
+
 
 antigen use oh-my-zsh
 
-antigen bundle z
 antigen bundle git
 antigen bundle pip
 antigen bundle command-not-found
@@ -17,12 +18,12 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # zsh-command-time
-ZSH_COMMAND_TIME_MSG="Execution time: %s sec"
+ZSH_COMMAND_TIME_MIN_SECONDS=3
+ZSH_COMMAND_TIME_MSG="%s"
 ZSH_COMMAND_TIME_COLOR="yellow"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a9a9a9"
 
 antigen theme bira 
-antigen cache-gen
 antigen apply
 
 #export NVM_LAZY_LOAD=true

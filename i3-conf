@@ -194,5 +194,6 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# background image
-exec --no-startup-id feh --bg-fill ~/images/charlotte.jpg
+# brightness
+bindsym XF86MonBrightnessUp exec brightness-inc
+bindsym XF86MonBrightnessDown exec brightness-dec
