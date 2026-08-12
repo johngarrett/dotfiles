@@ -1,4 +1,26 @@
-# macOS
+# Dotfiles
+
+Supports macOS, Debian/Ubuntu, and Arch Linux.
+
+## Setup
+
+```bash
+git clone --recurse-submodules git@github.com:johngarrett/dotfiles.git
+cd dotfiles
+./setup.sh
+```
+
+The setup script installs Git, curl, zsh, tmux, Neovim, and Alacritty using
+Homebrew, apt, or pacman. Existing configuration files are moved to timestamped
+backups before symlinks are created. Run `prefix-I` inside tmux to install TPM
+plugins.
+
+Neovim is tracked as a submodule from the personal NvChad repository and pinned
+to the configuration commit used on the development machine. That commit must
+be available from the remote before a fresh clone can initialize the submodule.
+
+## Older manual notes
+
 install alacritty
 ```bash
 brew install --cask alacritty --no-quarantine
@@ -60,4 +82,3 @@ rm ~/.config/nvim/lua/custom
 
 ln -s ~/dotfiles/nvim/lua/custom ~/.config/nvim/lua
 ```
-

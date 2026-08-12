@@ -1,8 +1,11 @@
-#source ~/.antigen.zsh
-source /usr/share/zsh/share/antigen.zsh
+if [ -r "$HOME/antigen.zsh" ]; then
+  source "$HOME/antigen.zsh"
+elif [ -r /usr/share/zsh/share/antigen.zsh ]; then
+  source /usr/share/zsh/share/antigen.zsh
+fi
 
-
-antigen use oh-my-zsh
+if typeset -f antigen >/dev/null 2>&1; then
+  antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle pip
@@ -24,7 +27,8 @@ ZSH_COMMAND_TIME_COLOR="yellow"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a9a9a9"
 
 antigen theme bira 
-antigen apply
+  antigen apply
+fi
 
 #export NVM_LAZY_LOAD=true
 
@@ -40,14 +44,16 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 #export SWIFTENV_ROOT="$HOME/.swiftenv"
 #export PATH="$SWIFTENV_ROOT/bin:$PATH"
 
-export PATH=$PATH:/opt/homebrew/bin
-export PATH=$PATH:/opt/local/bin
+if [ -d /opt/homebrew/bin ]; then export PATH="$PATH:/opt/homebrew/bin"; fi
+if [ -d /opt/local/bin ]; then export PATH="$PATH:/opt/local/bin"; fi
 export PATH=$PATH:~/bin
 
 #export THEOS=~/theos
 #eval $(/opt/homebrew/bin/brew shellenv)
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if command -v jenv >/dev/null 2>&1; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
 #export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 #export PATH=$PATH:/opt/riscv/bin
 
@@ -88,7 +94,9 @@ gch() {
 
 alias nr="npm run"
 
-eval "$(nodenv init - zsh)"
+if command -v nodenv >/dev/null 2>&1; then
+  eval "$(nodenv init - zsh)"
+fi
 #source ~/.work/zshrc
 
 #source ~/dotfiles/gco_completion.sh
@@ -101,9 +109,10 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # gdal-env
-source /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh
+if [ -r /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh ]; then
+  source /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh
+fi
 
 # Created by `pipx` on 2026-03-16 04:52:59
 export PATH="$PATH:/Users/garrepi/.local/bin"
-
 
