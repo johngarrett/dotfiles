@@ -45,8 +45,8 @@ export PATH=$PATH:~/bin
 
 #export THEOS=~/theos
 #eval $(/opt/homebrew/bin/brew shellenv)
-#export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 #export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 #export PATH=$PATH:/opt/riscv/bin
 
@@ -75,8 +75,6 @@ export GTEST_COLOR=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NODE_EXTRA_CA_CERTS=~/bundle.pem
-
 gch() {
  git checkout “$(git branch — all | fzf| tr -d ‘[:space:]’)”
 }
@@ -89,7 +87,7 @@ gch() {
 
 alias nr="npm run"
 
-#eval "$(nodenv init - zsh)"
+eval "$(nodenv init - zsh)"
 #source ~/.work/zshrc
 
 #source ~/dotfiles/gco_completion.sh
@@ -100,3 +98,11 @@ alias nr="npm run"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# gdal-env
+source /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh
+
+# Created by `pipx` on 2026-03-16 04:52:59
+export PATH="$PATH:/Users/garrepi/.local/bin"
+
+
