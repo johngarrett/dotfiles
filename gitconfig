@@ -25,5 +25,7 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+[diff]
+    # external = difft
 [credential]
 	helper = cache --timeout=60480000
