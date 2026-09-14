@@ -82,6 +82,7 @@ install_hyprland_configs() {
   link_config "$REPO_DIR/waybar" "$CONFIG_DIR/waybar"
   link_config "$REPO_DIR/fuzzel" "$CONFIG_DIR/fuzzel"
   link_config "$REPO_DIR/mako" "$CONFIG_DIR/mako"
+  link_config "$REPO_DIR/sunshine/sunshine.conf" "$CONFIG_DIR/sunshine/sunshine.conf"
   link_config "$REPO_DIR/bin/screenshot-region" "$HOME/.local/bin/screenshot-region"
   link_config "$REPO_DIR/bin/clipboard-picker" "$HOME/.local/bin/clipboard-picker"
   link_config "$REPO_DIR/bin/session-menu" "$HOME/.local/bin/session-menu"
@@ -96,12 +97,12 @@ install_fonts() {
 
 install_user_services() {
   local unit
-  for unit in ssh-agent.service waybar.service cliphist-text.service cliphist-image.service; do
+  for unit in ssh-agent.service waybar.service cliphist-text.service cliphist-image.service sunshine.service; do
     link_config "$REPO_DIR/systemd/user/$unit" "$CONFIG_DIR/systemd/user/$unit"
   done
   systemctl --user daemon-reload
   systemctl --user enable --now \
-    ssh-agent.service waybar.service cliphist-text.service cliphist-image.service \
+    ssh-agent.service waybar.service cliphist-text.service cliphist-image.service sunshine.service \
     hypridle.service hyprpolkitagent.service
   log "enabled desktop and SSH user services"
 }
