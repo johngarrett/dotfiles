@@ -94,9 +94,7 @@ end
 for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    -- Keep working here when sending a window to a workspace that does not yet
-    -- exist; the destination can be selected explicitly with Super+number.
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Resize mode: Super+R enters; H/J/K/L resize; Enter/Escape/Super+R exits.
