@@ -7,7 +7,7 @@ hl.monitor({
     output = "HDMI-A-2",
     mode = "3840x2160@60",
     position = "0x0",
-    scale = 1.25,
+    scale = 2--1.25,
 })
 
 hl.env("XCURSOR_SIZE", "24")
@@ -44,7 +44,9 @@ hl.config({
         blur = { enabled = false },
     },
     animations = { enabled = true },
-    dwindle = { preserve_split = true },
+    -- Insert the new window after the focused one (right/bottom), rather than
+    -- choosing the side based on the pointer position.
+    dwindle = { preserve_split = true, force_split = 2 },
     misc = {
         force_default_wallpaper = 0,
         disable_hyprland_logo = true,
@@ -73,8 +75,8 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit"))
 
 -- Hyprland groups are the useful equivalent of i3's tabbed/stacked containers.
-hl.bind(mainMod .. " + S", hl.dsp.group.toggle())
-hl.bind(mainMod .. " + W", hl.dsp.group.next())
+hl.bind(mainMod .. " + W", hl.dsp.group.toggle())
+hl.bind(mainMod .. " + S", hl.dsp.group.next())
 
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("screenshot-region"))
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("clipboard-picker"))
@@ -85,7 +87,8 @@ hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("session-menu"))
 for _, direction in ipairs({ "left", "down", "up", "right" }) do
     local key = ({ left = "H", down = "J", up = "K", right = "L" })[direction]
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ direction = direction }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = direction }))
+    -- Moving toward a group adds the window as a tab; moving a tab away removes it.
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = direction, group_aware = true }))
 end
 
 for i = 1, 10 do

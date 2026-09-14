@@ -68,8 +68,9 @@ laptop battery or backlight device.
 | `Super+F` | Toggle fullscreen |
 | `Super+Shift+F` | Toggle floating |
 | `Super+E` | Toggle the next dwindle split direction |
-| `Super+S` | Create or toggle a window group |
-| `Super+W` | Cycle the active window in a group |
+| `Super+W` | Create or toggle a tabbed window group |
+| `Super+S` | Cycle the active window in a group |
+| `Super+Shift+H/J/K/L` | Move a window; insert into or remove from a group when applicable |
 | `Super+R` | Enter resize mode; use H/J/K/L and exit with Enter or Escape |
 | `Super+Shift+S` | Select, save, and copy a screenshot |
 | `Super+Alt+Space` | Select an item from clipboard history |

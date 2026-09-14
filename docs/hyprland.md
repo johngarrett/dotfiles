@@ -48,7 +48,12 @@ copying these colors to different CPU hardware.
 
 Super is the main modifier. Vim-direction focus/movement, numbered workspaces,
 fullscreen, floating, launcher, screenshot, reload, and resize behavior were
-carried over from i3. Hyprland groups replace i3's tabbed/stacked concept.
+carried over from i3. Hyprland groups replace i3's tabbed/stacked concept:
+`Super+W` creates or toggles the active window's group, while `Super+S` cycles
+the active group. `Super+Shift+H/J/K/L` moves a window directionally and is
+group-aware: moving toward a group adds a tab, while moving a tab away removes
+it. New dwindle windows are inserted after the focused window (right or bottom,
+according to the split orientation).
 There is no fake replacement for i3 parent-container focus or separate forced
 horizontal/vertical splits.
 
