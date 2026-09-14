@@ -23,15 +23,15 @@ end)
 
 hl.config({
     general = {
-        gaps_in = 4,
-        gaps_out = 4,
+        gaps_in = 8,
+        gaps_out = 8,
         border_size = 0,
         resize_on_border = false,
         allow_tearing = false,
         layout = "dwindle",
     },
     decoration = {
-        rounding = 16,
+        rounding = 0,
         rounding_power = 2,
         active_opacity = 1.0,
         inactive_opacity = 1.0,
@@ -54,7 +54,7 @@ hl.config({
     input = {
         kb_layout = "us",
         -- Caps Lock is an additional Escape; the physical Escape remains Escape.
-        kb_options = "caps:escape,altwin:swap_alt_win",
+        kb_options = "caps:escape", --,altwin:swap_alt_win",
         follow_mouse = 0,
         sensitivity = 0,
     },

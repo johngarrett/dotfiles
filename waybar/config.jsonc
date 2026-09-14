@@ -8,7 +8,7 @@
   "spacing": 8,
   "modules-left": ["hyprland/workspaces"],
   "modules-center": [],
-  "modules-right": ["custom/grayscale", "custom/blue-light", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray", "custom/sleep", "custom/power"],
+  "modules-right": ["custom/grayscale", "custom/blue-light", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray", "custom/sleep"],
 
   "hyprland/workspaces": {
     "all-outputs": false,
@@ -75,10 +75,5 @@
     "tooltip": true,
     "tooltip-format": "Suspend",
     "on-click": "loginctl lock-session && systemctl suspend"
-  },
-  "custom/power": {
-    "format": "󰐥",
-    "tooltip": false,
-    "on-click": "session-menu"
   }
 }

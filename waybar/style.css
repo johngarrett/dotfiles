@@ -50,8 +50,6 @@ window#waybar {
 #temperature.critical { background: #bd2c40; color: #ffffff; }
 #network.disconnected, #pulseaudio.muted { color: #a1b0b8; }
 #idle_inhibitor.activated { color: #ffcb6b; }
-#custom-sleep { color: #ffcb6b; }
-#custom-power { padding-right: 12px; color: #f07178; }
 
 tooltip {
   background: #252525;
