@@ -50,7 +50,9 @@ apply_filter() {
     printf '%s\n' 'uniform sampler2D tex;'
     printf '%s\n' 'void main() {'
     printf '%s\n' '  vec4 color = texture(tex, v_texcoord);'
-    printf '  color.b *= 1.0 - (%s.0 / 100.0);\n' "$blue"
+    # A redshift-style white balance: reduce both blue and a little green so
+    # the image becomes warm/amber rather than turning green.
+    printf '  color.rgb = mix(color.rgb, color.rgb * vec3(1.00, 0.70, 0.40), %s.0 / 100.0);\n' "$blue"
     printf '%s\n' '  float grayscale = (color.r + color.g + color.b) / 3.0;'
     printf '  color.rgb = mix(color.rgb, vec3(grayscale), %s.0 / 100.0);\n' "$gray"
     printf '%s\n' '  fragColor = color;'

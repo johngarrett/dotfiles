@@ -12,6 +12,8 @@ hl.monitor({
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 -- Make the compositor environment available to user services, then start the
 -- status bar. The service is idempotent, so an already-running bar is kept.
