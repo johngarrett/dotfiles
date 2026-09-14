@@ -27,6 +27,9 @@ platform. On Arch, package installation uses a full `pacman -Syu` transaction to
 avoid partial upgrades. Run `prefix-I` inside tmux afterward to install TPM
 plugins.
 
+On Linux, a login on tty1 automatically starts Hyprland. Other virtual
+terminals and remote logins remain ordinary shell sessions.
+
 ## Hyprland desktop
 
 The Arch setup is intentionally Wayland-native:
@@ -76,7 +79,8 @@ laptop battery or backlight device.
 | `Super+mouse left/right` | Move/resize a window |
 
 Media keys control PipeWire volume, microphone mute, and Playerctl-compatible
-players. Focus does not follow the mouse, matching the previous i3 setup.
+players. Caps Lock and Escape are swapped, as are Alt and Super. Focus does not
+follow the mouse, matching the previous i3 setup.
 
 ### Display assumptions
 

@@ -1,6 +1,6 @@
 * {
   border: none;
-  border-radius: 0;
+  border-radius: 16px;
   font-family: "BlexMono Nerd Font";
   font-size: 14px;
   min-height: 0;
@@ -23,6 +23,8 @@ window#waybar {
 #workspaces button:hover { background: #333333; box-shadow: none; }
 
 #idle_inhibitor,
+#custom-grayscale,
+#custom-blue-light,
 #pulseaudio,
 #network,
 #cpu,
@@ -34,6 +36,10 @@ window#waybar {
   padding: 0 8px;
 }
 
+#custom-grayscale { color: #c3d82c; }
+#custom-blue-light { color: #82aaff; }
+#custom-grayscale.disabled,
+#custom-blue-light.disabled { color: #a1b0b8; }
 #cpu { color: #82aaff; }
 #memory { color: #82aaff; }
 #temperature { color: #c3d82c; }

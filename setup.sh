@@ -69,6 +69,7 @@ install_packages() {
 
 install_core_configs() {
   link_config "$REPO_DIR/zshrc" "$HOME/.zshrc"
+  link_config "$REPO_DIR/zprofile" "$HOME/.zprofile"
   link_config "$REPO_DIR/tmux.conf" "$HOME/.tmux.conf"
   link_config "$REPO_DIR/alacritty.toml" "$CONFIG_DIR/alacritty/alacritty.toml"
   link_config "$REPO_DIR/nvim" "$CONFIG_DIR/nvim"
@@ -84,6 +85,7 @@ install_hyprland_configs() {
   link_config "$REPO_DIR/bin/screenshot-region" "$HOME/.local/bin/screenshot-region"
   link_config "$REPO_DIR/bin/clipboard-picker" "$HOME/.local/bin/clipboard-picker"
   link_config "$REPO_DIR/bin/session-menu" "$HOME/.local/bin/session-menu"
+  link_config "$REPO_DIR/bin/screen-filter" "$HOME/.local/bin/screen-filter"
 }
 
 install_fonts() {

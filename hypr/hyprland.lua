@@ -7,11 +7,17 @@ hl.monitor({
     output = "HDMI-A-2",
     mode = "3840x2160@60",
     position = "0x0",
-    scale = 1.5,
+    scale = 1.25,
 })
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+
+-- Make the compositor environment available to user services, then start the
+-- status bar. The service is idempotent, so an already-running bar is kept.
+hl.on("hyprland.start", function()
+    hl.exec_cmd("screen-filter apply; systemctl --user import-environment WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start waybar.service")
+end)
 
 hl.config({
     general = {
@@ -23,7 +29,7 @@ hl.config({
         layout = "dwindle",
     },
     decoration = {
-        rounding = 8,
+        rounding = 16,
         rounding_power = 2,
         active_opacity = 1.0,
         inactive_opacity = 1.0,
@@ -43,16 +49,18 @@ hl.config({
     },
     input = {
         kb_layout = "us",
+        -- Caps Lock is an additional Escape; the physical Escape remains Escape.
+        kb_options = "caps:escape,altwin:swap_alt_win",
         follow_mouse = 0,
         sensitivity = 0,
     },
 })
 
 hl.curve("easeOut", { type = "bezier", points = { {0.22, 1}, {0.36, 1} } })
-hl.animation({ leaf = "global", enabled = true, speed = 6, bezier = "easeOut" })
-hl.animation({ leaf = "windows", enabled = true, speed = 5, bezier = "easeOut" })
-hl.animation({ leaf = "fade", enabled = true, speed = 5, bezier = "easeOut" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "easeOut", style = "fade" })
+hl.animation({ leaf = "global", enabled = true, speed = 3, bezier = "easeOut" })
+hl.animation({ leaf = "windows", enabled = true, speed = 3, bezier = "easeOut" })
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "easeOut" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "easeOut", style = "fade" })
 
 -- Core application and window bindings.
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))

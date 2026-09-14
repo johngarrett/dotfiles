@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/screen-filter"
+RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}"
+SHADER_FILE="$RUNTIME_DIR/hypr-screen-filter-${UID}.frag"
+STEP_DEFAULT=50
+
+mkdir -p "$STATE_DIR"
+exec 9>"$STATE_DIR/lock"
+flock 9
+
+read_setting() {
+  local name="$1" fallback="$2" value
+  value=""
+  if [[ -r "$STATE_DIR/$name" ]]; then
+    IFS= read -r value < "$STATE_DIR/$name" || true
+  fi
+  if [[ "$value" =~ ^[0-9]+$ ]] && (( value >= 0 && value <= 100 )); then
+    printf '%s' "$value"
+  else
+    printf '%s' "$fallback"
+  fi
+}
+
+write_setting() {
+  printf '%s\n' "$2" > "$STATE_DIR/$1"
+}
+
+is_enabled() {
+  [[ "$(read_setting "$1-enabled" 0)" == 1 ]]
+}
+
+apply_filter() {
+  local gray=0 blue=0 temporary
+  is_enabled grayscale && gray="$(read_setting grayscale 50)"
+  is_enabled blue-light && blue="$(read_setting blue-light 50)"
+
+  if (( gray == 0 && blue == 0 )); then
+    hyprctl eval "hl.config({ ['decoration.screen_shader'] = '' })" >/dev/null
+    return
+  fi
+
+  temporary="${SHADER_FILE}.tmp.$$"
+  {
+    printf '%s\n' '#version 300 es'
+    printf '%s\n' 'precision mediump float;'
+    printf '%s\n' 'in vec2 v_texcoord;'
+    printf '%s\n' 'layout(location = 0) out vec4 fragColor;'
+    printf '%s\n' 'uniform sampler2D tex;'
+    printf '%s\n' 'void main() {'
+    printf '%s\n' '  vec4 color = texture(tex, v_texcoord);'
+    printf '  color.b *= 1.0 - (%s.0 / 100.0);\n' "$blue"
+    printf '%s\n' '  float grayscale = (color.r + color.g + color.b) / 3.0;'
+    printf '  color.rgb = mix(color.rgb, vec3(grayscale), %s.0 / 100.0);\n' "$gray"
+    printf '%s\n' '  fragColor = color;'
+    printf '%s\n' '}'
+  } > "$temporary"
+  mv -f -- "$temporary" "$SHADER_FILE"
+  hyprctl eval "hl.config({ ['decoration.screen_shader'] = [[$SHADER_FILE]] })" >/dev/null
+}
+
+validate_filter() {
+  case "$1" in
+    grayscale|blue-light) ;;
+    *) printf 'unknown filter: %s\n' "$1" >&2; exit 2 ;;
+  esac
+}
+
+command="${1:-apply}"
+case "$command" in
+  apply)
+    apply_filter
+    ;;
+  status)
+    filter="${2:-}"
+    validate_filter "$filter"
+    value="$(read_setting "$filter" "$STEP_DEFAULT")"
+    if is_enabled "$filter"; then
+      class=enabled
+      state=on
+    else
+      class=disabled
+      state=off
+    fi
+    label="${filter/blue-light/blue}"
+    printf '{"text":"%s %s%%","tooltip":"%s light filter: %s at %s%%\\nClick to toggle · scroll to adjust","class":"%s"}\n' \
+      "$label" "$value" "$label" "$state" "$value" "$class"
+    ;;
+  toggle)
+    filter="${2:-}"
+    validate_filter "$filter"
+    if is_enabled "$filter"; then
+      write_setting "$filter-enabled" 0
+    else
+      write_setting "$filter-enabled" 1
+    fi
+    apply_filter
+    ;;
+  adjust)
+    filter="${2:-}"
+    delta="${3:-}"
+    validate_filter "$filter"
+    [[ "$delta" =~ ^-?[0-9]+$ ]] || { printf 'adjustment must be an integer\n' >&2; exit 2; }
+    value="$(read_setting "$filter" "$STEP_DEFAULT")"
+    (( value += delta )) || true
+    (( value < 0 )) && value=0
+    (( value > 100 )) && value=100
+    write_setting "$filter" "$value"
+    apply_filter
+    ;;
+  *)
+    printf 'usage: screen-filter {apply|status FILTER|toggle FILTER|adjust FILTER DELTA}\n' >&2
+    exit 2
+    ;;
+esac
