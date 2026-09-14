@@ -7,7 +7,7 @@ hl.monitor({
     output = "HDMI-A-2",
     mode = "3840x2160@60",
     position = "0x0",
-    scale = 2--1.25,
+    scale = 1.25,
 })
 
 hl.env("XCURSOR_SIZE", "24")
