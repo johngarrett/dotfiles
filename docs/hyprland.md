@@ -28,7 +28,7 @@ before changing the setup script or replacing a desktop component.
 | Audio | PipeWire + WirePlumber | User services/sockets |
 | Screen sharing | xdg-desktop-portal-hyprland | D-Bus activation |
 
-There is no wallpaper daemon, battery module, backlight binding, Rofi, Dunst,
+There is a Hyprpaper wallpaper service, but no battery module, backlight binding, Rofi, Dunst,
 Picom, Polybar, or external gesture daemon. The machine has no laptop battery,
 backlight, touchpad, or second display. Waybar shows ordinary numeric buttons
 only for workspaces that currently exist.
@@ -86,9 +86,8 @@ uses `git submodule update --init --remote --recursive` and warns rather than
 blocking every other dotfile if the submodule is temporarily unavailable.
 
 Package installation intentionally uses `pacman -Syu --needed`, never `-Sy`, to
-avoid an unsupported partial Arch upgrade. Hyprpaper is the only package the
-script removes, because the selected background is compositor-provided and the
-package has no reverse dependencies on this machine.
+avoid an unsupported partial Arch upgrade. Hyprpaper is installed and managed
+as a user service because it provides the selected background.
 
 ## Validation checklist
 

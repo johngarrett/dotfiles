@@ -16,15 +16,15 @@ hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 -- Make the compositor environment available to user services, then start the
--- status bar. The service is idempotent, so an already-running bar is kept.
+-- wallpaper and status-bar services. Both services are idempotent.
 hl.on("hyprland.start", function()
-    hl.exec_cmd("screen-filter apply; systemctl --user import-environment WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start waybar.service")
+    hl.exec_cmd("screen-filter apply; systemctl --user import-environment WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP && systemctl --user start hyprpaper.service && systemctl --user start waybar.service")
 end)
 
 hl.config({
     general = {
-        gaps_in = 8,
-        gaps_out = 8,
+        gaps_in = 12,
+        gaps_out = 16,
         border_size = 0,
         resize_on_border = false,
         allow_tearing = false,
@@ -121,12 +121,6 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
-
-hl.window_rule({
-    name = "float-pavucontrol",
-    match = { class = "^(org.pulseaudio.pavucontrol)$" },
-    float = true,
-})
 
 hl.window_rule({
     name = "suppress-maximize-events",

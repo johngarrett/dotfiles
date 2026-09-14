@@ -49,16 +49,12 @@ install_packages() {
       elif command -v pacman >/dev/null 2>&1; then
         sudo pacman -Syu --needed --noconfirm \
           git curl zsh tmux neovim alacritty \
-          hyprland waybar fuzzel mako cliphist grim slurp wl-clipboard \
+          hyprland hyprpaper waybar fuzzel mako cliphist grim slurp wl-clipboard \
           hyprlock hypridle hyprpolkitagent \
           xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
           pipewire pipewire-pulse wireplumber playerctl pavucontrol \
           noto-fonts noto-fonts-emoji xorg-xwayland
 
-        if pacman -Q hyprpaper >/dev/null 2>&1; then
-          sudo pacman -Rns --noconfirm hyprpaper
-          log "removed unused hyprpaper package"
-        fi
       else
         die "unsupported Linux distribution: install git, curl, zsh, tmux, neovim, and alacritty manually"
       fi
@@ -77,6 +73,7 @@ install_core_configs() {
 
 install_hyprland_configs() {
   link_config "$REPO_DIR/hypr/hyprland.lua" "$CONFIG_DIR/hypr/hyprland.lua"
+  link_config "$REPO_DIR/hypr/hyprpaper.conf" "$CONFIG_DIR/hypr/hyprpaper.conf"
   link_config "$REPO_DIR/hypr/hyprlock.conf" "$CONFIG_DIR/hypr/hyprlock.conf"
   link_config "$REPO_DIR/hypr/hypridle.conf" "$CONFIG_DIR/hypr/hypridle.conf"
   link_config "$REPO_DIR/waybar" "$CONFIG_DIR/waybar"
@@ -97,12 +94,12 @@ install_fonts() {
 
 install_user_services() {
   local unit
-  for unit in ssh-agent.service waybar.service cliphist-text.service cliphist-image.service sunshine.service; do
+  for unit in ssh-agent.service hyprpaper.service waybar.service cliphist-text.service cliphist-image.service sunshine.service; do
     link_config "$REPO_DIR/systemd/user/$unit" "$CONFIG_DIR/systemd/user/$unit"
   done
   systemctl --user daemon-reload
   systemctl --user enable --now \
-    ssh-agent.service waybar.service cliphist-text.service cliphist-image.service sunshine.service \
+    ssh-agent.service hyprpaper.service waybar.service cliphist-text.service cliphist-image.service sunshine.service \
     hypridle.service hyprpolkitagent.service
   log "enabled desktop and SSH user services"
 }
