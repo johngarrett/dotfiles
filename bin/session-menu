@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+choice="$(printf '%s\n' Lock Suspend Logout Reboot Shutdown | fuzzel --dmenu --prompt='Session > ' --lines=5 --width=24)" || exit 0
+[[ -n "$choice" ]] || exit 0
+
+if [[ "$choice" == Lock ]]; then
+  loginctl lock-session
+  exit 0
+fi
+
+confirmation="$(printf '%s\n' No Yes | fuzzel --dmenu --prompt="$choice? " --lines=2 --width=20)" || exit 0
+[[ "$confirmation" == Yes ]] || exit 0
+
+case "$choice" in
+  Suspend) systemctl suspend ;;
+  Logout) hyprctl dispatch 'hl.dsp.exit()' ;;
+  Reboot) systemctl reboot ;;
+  Shutdown) systemctl poweroff ;;
+esac

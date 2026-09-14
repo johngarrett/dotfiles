@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+screenshot_dir="${XDG_SCREENSHOTS_DIR:-$HOME/Pictures/Screenshots}"
+mkdir -p "$screenshot_dir"
+screenshot_file="$screenshot_dir/$(date +%Y-%m-%d_%H-%M-%S).png"
+
+geometry="$(slurp)" || exit 0
+grim -g "$geometry" "$screenshot_file"
+wl-copy < "$screenshot_file"
