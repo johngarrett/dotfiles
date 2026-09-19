@@ -42,7 +42,8 @@
     "format-muted": "muted 󰖁",
     "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
     "scroll-step": 5,
-    "on-click": "pavucontrol"
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol"
   },
   "network": {
     "interval": 5,
@@ -66,7 +67,7 @@
   },
   "clock": {
     "interval": 5,
-    "format": "{:%m/%d  %H:%M}",
+    "format": "{:%m/%d  %I:%M %p}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "tray": { "icon-size": 18, "spacing": 8 },

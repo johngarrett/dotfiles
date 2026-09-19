@@ -50,6 +50,9 @@ The Arch setup is intentionally Wayland-native:
 - **xdg-desktop-portal-hyprland** provides screen sharing and desktop portals.
 - **hyprpolkitagent** provides graphical authentication prompts.
 
+Optional desktop and hardware-control instructions are collected in
+[`docs/desktop-tools.md`](docs/desktop-tools.md).
+
 Hyprpaper is deliberately not used: Hyprland renders a plain dark background.
 Battery and brightness controls are omitted because this workstation has no
 laptop battery or backlight device.
