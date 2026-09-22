@@ -12,5 +12,11 @@ fi
 # Start the graphical session after an interactive login on the first virtual
 # terminal. SSH sessions and additional local terminals remain shells.
 if [[ "$(uname -s)" == Linux && -z "${WAYLAND_DISPLAY:-}" && "${XDG_VTNR:-0}" == 1 ]] && command -v start-hyprland >/dev/null 2>&1; then
-  exec start-hyprland
+  hyprland_session="$HOME/.local/bin/hyprland-session"
+  [[ -x "$hyprland_session" ]] || hyprland_session="$HOME/dotfiles/bin/hyprland-session"
+  if [[ -x "$hyprland_session" ]]; then
+    exec "$hyprland_session"
+  else
+    exec start-hyprland
+  fi
 fi

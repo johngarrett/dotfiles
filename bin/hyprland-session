@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Keep a wake-time compositor crash from leaving the user stranded on the
+# crash screen. A clean Hyprland exit still ends the login session normally.
+delay=2
+
+while true; do
+  start-hyprland
+  status=$?
+
+  if (( status == 0 )); then
+    exit 0
+  fi
+
+  printf '[hyprland-session] start-hyprland exited with status %d; retrying in %ds\n' \
+    "$status" "$delay" >&2
+  sleep "$delay"
+  (( delay < 10 )) && (( delay += 1 ))
+done

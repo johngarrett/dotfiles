@@ -8,7 +8,8 @@ before changing the setup script or replacing a desktop component.
 - Arch Linux with Hyprland 0.56 or newer using the Lua config provider.
 - One Apple Studio Display on `HDMI-A-2`, 3840×2160 at 60 Hz, scale 1.5.
 - A generic preferred-mode monitor rule remains for other or renamed outputs.
-- NVIDIA GTX 1070 currently works without repository-managed driver overrides.
+- NVIDIA GTX 1070 uses repository-managed suspend/resume settings so its video
+  memory is preserved across deep suspend.
 - Xwayland is intentional: the installed Hyprland package requires it and some
   applications still need X11 compatibility. The retired i3/X11 desktop stack
   must not be reintroduced.
@@ -35,8 +36,10 @@ only for workspaces that currently exist.
 
 Hypridle has two ordered five-minute listeners: the first locks the session and
 the second powers the display off. The DPMS listener turns the display back on
-as soon as input resumes. Do not separate these timeouts unless lock and screen
-power policy are intentionally being changed together.
+as soon as input resumes. System resume uses `restore-display`, which waits for
+the Wayland output to reappear before re-enabling DPMS. Do not separate these
+timeouts unless lock and screen power policy are intentionally being changed
+together.
 
 The temperature module reads the i7-6700K package sensor at
 `/sys/devices/platform/coretemp.0/hwmon/*/temp1_input`. The driver reports an

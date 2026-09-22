@@ -28,7 +28,9 @@ avoid partial upgrades. Run `prefix-I` inside tmux afterward to install TPM
 plugins.
 
 On Linux, a login on tty1 automatically starts Hyprland. Other virtual
-terminals and remote logins remain ordinary shell sessions.
+terminals and remote logins remain ordinary shell sessions. If Hyprland exits
+abnormally, tty1 waits briefly and relaunches it so a compositor crash does
+not require a reboot.
 
 ## Hyprland desktop
 

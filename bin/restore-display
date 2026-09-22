@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# The NVIDIA GPU and the Studio Display's Thunderbolt/USB hub do not resume
+# synchronously. Wait for a Wayland output before asking Hyprland to re-enable
+# DPMS; otherwise the first modeset can race the post-suspend device reset.
+for attempt in {1..20}; do
+  if hyprctl monitors -j 2>/dev/null | grep -q '"name"'; then
+    hyprctl dispatch 'hl.dsp.dpms({action = "on"})' && exit 0
+  fi
+  sleep 0.5
+done
+
+# Keep a best-effort fallback if the output is slow to enumerate or temporarily
+# unavailable. This command is harmless when the output is already enabled.
+hyprctl dispatch 'hl.dsp.dpms({action = "on"})'

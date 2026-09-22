@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+PREFS_FILE="${SUPCOM2_PREFS_FILE:-/ext/steamapps/compatdata/40100/pfx/drive_c/users/steamuser/AppData/Local/Gas Powered Games/Supreme Commander 2/Game.prefs}"
+WIDTH="${1:-1280}"
+HEIGHT="${2:-720}"
+REFRESH="${3:-60}"
+
+for value in "$WIDTH" "$HEIGHT" "$REFRESH"; do
+  [[ "$value" =~ ^[1-9][0-9]*$ ]] || {
+    printf 'resolution values must be positive integers (width height refresh)\n' >&2
+    exit 2
+  }
+done
+
+[[ -f "$PREFS_FILE" ]] || {
+  printf 'Supreme Commander 2 preferences not found: %s\n' "$PREFS_FILE" >&2
+  printf 'Set SUPCOM2_PREFS_FILE if your Steam library is elsewhere.\n' >&2
+  exit 1
+}
+
+mapfile -t setting_lines < <(grep -nE "^[[:space:]]*primary_adapter[[:space:]]*=[[:space:]]*'[0-9]+,[0-9]+,[0-9]+'[[:space:]]*,?[[:space:]]*$" "$PREFS_FILE" || true)
+if (( ${#setting_lines[@]} != 1 )); then
+  printf 'Expected exactly one active primary_adapter resolution in %s; found %d. No changes made.\n' \
+    "$PREFS_FILE" "${#setting_lines[@]}" >&2
+  exit 1
+fi
+
+line_number="${setting_lines[0]%%:*}"
+backup="${PREFS_FILE}.bak.$(date +%Y%m%d%H%M%S)"
+cp -a -- "$PREFS_FILE" "$backup"
+sed -i "${line_number}s/'[0-9][0-9]*,[0-9][0-9]*,[0-9][0-9]*'/'${WIDTH},${HEIGHT},${REFRESH}'/" "$PREFS_FILE"
+
+printf 'Set Supreme Commander 2 resolution to %sx%s @ %s Hz.\nBackup: %s\n' \
+  "$WIDTH" "$HEIGHT" "$REFRESH" "$backup"

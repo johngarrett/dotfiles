@@ -51,6 +51,7 @@ install_packages() {
           git curl zsh tmux neovim alacritty \
           hyprland hyprpaper waybar fuzzel mako cliphist grim slurp wl-clipboard \
           hyprlock hypridle hyprpolkitagent \
+          wireless-regdb \
           xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
           pipewire pipewire-pulse wireplumber playerctl pavucontrol \
           noto-fonts noto-fonts-emoji xorg-xwayland
@@ -84,6 +85,26 @@ install_hyprland_configs() {
   link_config "$REPO_DIR/bin/clipboard-picker" "$HOME/.local/bin/clipboard-picker"
   link_config "$REPO_DIR/bin/session-menu" "$HOME/.local/bin/session-menu"
   link_config "$REPO_DIR/bin/screen-filter" "$HOME/.local/bin/screen-filter"
+  link_config "$REPO_DIR/bin/hyprland-session" "$HOME/.local/bin/hyprland-session"
+  link_config "$REPO_DIR/bin/restore-display" "$HOME/.local/bin/restore-display"
+}
+
+install_nvidia_power_config() {
+  local source="$REPO_DIR/system/nvidia-power-management.conf"
+  local target=/etc/modprobe.d/nvidia-power-management.conf
+
+  if sudo cmp -s -- "$source" "$target"; then
+    log "NVIDIA suspend/resume configuration already installed"
+    return
+  fi
+
+  if sudo test -e "$target" || sudo test -L "$target"; then
+    sudo cp -- "$target" "${target}.backup-${STAMP}"
+    log "backed up $target to ${target}.backup-${STAMP}"
+  fi
+  sudo install -Dm644 -- "$source" "$target"
+  sudo mkinitcpio -P
+  log "installed NVIDIA suspend/resume configuration and rebuilt initramfs"
 }
 
 install_fonts() {
@@ -128,6 +149,11 @@ if [[ "$(uname -s)" == Linux ]] && command -v pacman >/dev/null 2>&1; then
     install_hyprland_configs
   else
     log "skipped Hyprland desktop configuration"
+  fi
+  if confirm "Install NVIDIA suspend/resume configuration"; then
+    install_nvidia_power_config
+  else
+    log "skipped NVIDIA suspend/resume configuration"
   fi
 fi
 
