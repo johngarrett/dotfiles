@@ -10,6 +10,9 @@ before changing the setup script or replacing a desktop component.
 - A generic preferred-mode monitor rule remains for other or renamed outputs.
 - NVIDIA GTX 1070 uses repository-managed suspend/resume settings so its video
   memory is preserved across deep suspend.
+- The Gigabyte Z170 firmware can flood ACPI GPE 0x69 when the Studio Display
+  is attached. Do not mask that GPE: it is also involved in the display's
+  Thunderbolt/USB hot-plug path.
 - Xwayland is intentional: the installed Hyprland package requires it and some
   applications still need X11 compatibility. The retired i3/X11 desktop stack
   must not be reintroduced.
