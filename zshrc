@@ -25,6 +25,11 @@ if typeset -f antigen >/dev/null 2>&1; then
 
   antigen theme bira
   antigen apply
+
+  # Keep Bira's layout with a blue user/host, orange directory, and percent prompt.
+  PROMPT=${PROMPT//"$user_host"/'%B%F{blue}%n@%m%b%f '}
+  PROMPT=${PROMPT//"$current_dir"/'%B%F{208}%~ %b%f'}
+  PROMPT=${PROMPT//"$user_symbol"/'%%'}
 fi
 
 # Shared environment

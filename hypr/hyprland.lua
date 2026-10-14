@@ -7,7 +7,7 @@ hl.monitor({
     output = "HDMI-A-2",
     mode = "3840x2160@60",
     position = "0x0",
-    scale = 1--.25,--1.25,
+    scale = 1--1--.25,--1.25,
 })
 
 hl.env("XCURSOR_SIZE", "24")
@@ -80,7 +80,7 @@ hl.bind(mainMod .. " + S", hl.dsp.group.next())
 
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("screenshot-region"))
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("clipboard-picker"))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("session-menu"))
 
