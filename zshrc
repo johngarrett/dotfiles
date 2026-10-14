@@ -27,9 +27,10 @@ if typeset -f antigen >/dev/null 2>&1; then
   antigen apply
 
   # Keep Bira's layout with a blue user/host, orange directory, and percent prompt.
-  PROMPT=${PROMPT//"$user_host"/'%B%F{blue}%n@%m%b%f '}
-  PROMPT=${PROMPT//"$current_dir"/'%B%F{208}%~ %b%f'}
-  PROMPT=${PROMPT//"$user_symbol"/'%%'}
+  # Bira's local variables do not survive Antigen's theme-loading scope.
+  # Define the layout directly instead of substituting potentially empty values.
+  PROMPT='╭─%B%F{blue}%n@%m%b%f %B%F{208}%~ %b%f$(ruby_prompt_info)$(git_prompt_info)$(virtualenv_prompt_info)
+╰─%B%%%b '
 fi
 
 # Shared environment
