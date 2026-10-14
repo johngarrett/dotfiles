@@ -39,16 +39,16 @@ install_packages() {
   case "$(uname -s)" in
     Darwin)
       command -v brew >/dev/null 2>&1 || die "Homebrew is required on macOS: https://brew.sh"
-      brew install git curl zsh tmux neovim
+      brew install git curl zsh tmux neovim tree-sitter-cli
       brew install --cask alacritty || true
       ;;
     Linux)
       if command -v apt-get >/dev/null 2>&1; then
         sudo apt-get update
-        sudo apt-get install -y git curl zsh tmux neovim alacritty
+        sudo apt-get install -y git curl zsh tmux neovim alacritty tree-sitter-cli
       elif command -v pacman >/dev/null 2>&1; then
         sudo pacman -Syu --needed --noconfirm \
-          git curl zsh tmux neovim alacritty \
+          git curl zsh tmux neovim alacritty tree-sitter-cli \
           hyprland hyprpaper waybar fuzzel mako cliphist grim slurp wl-clipboard \
           hyprlock hypridle hyprpolkitagent \
           wireless-regdb \
