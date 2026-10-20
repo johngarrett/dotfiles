@@ -44,6 +44,22 @@ hl.config({
         blur = { enabled = false },
     },
     animations = { enabled = true },
+    group = {
+        groupbar = {
+            font_family = "BlexMono Nerd Font",
+            font_size = 12,
+            height = 21,
+            gradients = true,
+            text_color = "rgba(ffffffff)",
+            text_color_inactive = "rgba(999999ff)",
+            col = {
+                active = "rgba(000000ff)",
+                inactive = "rgba(000000ff)",
+                locked_active = "rgba(000000ff)",
+                locked_inactive = "rgba(000000ff)",
+            },
+        },
+    },
     -- Insert the new window after the focused one (right/bottom), rather than
     -- choosing the side based on the pointer position.
     dwindle = { preserve_split = true, force_split = 2 },
