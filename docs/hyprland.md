@@ -38,8 +38,13 @@ installs `firefox` and `xdg-utils` for this configuration.
 
 There is a Hyprpaper wallpaper service, but no battery module, backlight binding, Rofi, Dunst,
 Picom, Polybar, or external gesture daemon. The machine has no laptop battery,
-backlight, touchpad, or second display. Waybar shows ordinary numeric buttons
-only for workspaces that currently exist.
+backlight, touchpad, or second display. Waybar shows buttons only for workspaces
+that currently exist. `Super+T` opens a Fuzzel prompt to rename the current
+workspace, displaying labels such as `3 coding` with a white number and a title
+in the same `@secondary` gray as the IP address. Submit an empty name to
+restore the numeric label, or press Escape to cancel. Names last only for the
+session (and disappear if the workspace is destroyed); `Super+number` still
+selects the original workspace ID.
 
 The workspace buttons use Waybar's `ext/workspaces` module with the `activate`
 click action. This uses the Wayland workspace protocol and avoids Waybar 0.15's
@@ -67,13 +72,10 @@ carried over from i3. Hyprland groups replace i3's tabbed/stacked concept:
 `Super+W` creates or toggles the active window's group, while `Super+S` cycles
 the active group. `Super+Shift+H/J/K/L` moves a window directionally and is
 group-aware: moving toward a group adds a tab, while moving a tab away removes
-it. The scrolling layout normally inserts new windows in columns to the right.
-`Super+V` arms a one-shot vertical split in the focused column: the next tiled
-window opens beneath it. `Super+B` cancels the pending split, restoring normal
-horizontal placement. `Super+E` resizes all columns to fit the viewport.
-`Super+mouse wheel` focuses adjacent columns without
-wrapping at either end. The focused window has a 1px white border.
-There is no replacement for i3 parent-container focus or arbitrary nested splits.
+it. New dwindle windows are inserted after the focused window (right or bottom,
+according to the split orientation).
+There is no fake replacement for i3 parent-container focus or separate forced
+horizontal/vertical splits.
 
 Hyprland 0.56's `hyprctl dispatch` evaluates Lua. Shell helpers and bindings
 must therefore use expressions such as:

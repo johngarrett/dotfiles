@@ -25,14 +25,10 @@ hl.config({
     general = {
         gaps_in = 12,
         gaps_out = 16,
-        border_size = 1,
-        col = {
-            active_border = "rgba(ffffffff)",
-            inactive_border = "rgba(00000000)",
-        },
+        border_size = 0,
         resize_on_border = false,
         allow_tearing = false,
-        layout = "scrolling",
+        layout = "dwindle",
     },
     decoration = {
         rounding = 0,
@@ -48,7 +44,6 @@ hl.config({
         blur = { enabled = false },
     },
     animations = { enabled = true },
-    scrolling = { wrap_focus = false },
     group = {
         groupbar = {
             font_family = "BlexMono Nerd Font",
@@ -90,40 +85,11 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "easeOut
 -- Core application and window bindings.
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd('"' .. os.getenv("HOME") .. '/.local/bin/workspace-rename"'))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + E", hl.dsp.layout("fit all"))
--- Like i3's split v: arm the focused column without rearranging it.
-local verticalSplitTarget = nil
-hl.bind(mainMod .. " + V", function()
-    local w = hl.get_active_window()
-    verticalSplitTarget = w and not w.floating and w or nil
-end)
-hl.bind(mainMod .. " + B", function()
-    verticalSplitTarget = nil
-end)
--- New scrolling columns are inserted after the focused column. Preserve the
--- armed target during insertion, then move only the new window into that column.
-hl.on("window.open_early", function(w)
-    local target = verticalSplitTarget
-    if not target or not target.workspace or not w.workspace then return end
-    if target.workspace.id ~= w.workspace.id then return end
-    hl.dispatch(hl.dsp.focus({ window = target }))
-end)
-hl.on("window.open", function(w)
-    local target = verticalSplitTarget
-    if not target or w.floating or not target.workspace or not w.workspace then return end
-    if target.workspace.id ~= w.workspace.id then return end
-    verticalSplitTarget = nil
-    hl.dispatch(hl.dsp.focus({ window = w }))
-    hl.dispatch(hl.dsp.layout("consume_or_expel prev"))
-end)
-hl.on("window.close", function(w)
-    if verticalSplitTarget and verticalSplitTarget.address == w.address then
-        verticalSplitTarget = nil
-    end
-end)
+hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit"))
 
 -- Hyprland groups are the useful equivalent of i3's tabbed/stacked containers.
 hl.bind(mainMod .. " + W", hl.dsp.group.toggle())
@@ -162,9 +128,6 @@ end)
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
--- Hold Super and roll the wheel to focus the previous/next scrolling column.
-hl.bind(mainMod .. " + mouse_down", hl.dsp.layout("focus r"))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.layout("focus l"))
 
 -- Audio and media keys work while locked and repeat where useful.
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })

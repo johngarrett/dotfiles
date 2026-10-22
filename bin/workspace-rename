@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+"""Rename the focused workspace for this session, preserving its numeric ID."""
+import json
+import html
+from pathlib import Path
+import re
+import subprocess
+
+
+def workspace_title(workspace):
+    workspace_id = workspace["id"]
+    current = workspace["name"]
+    number = f'<span foreground="#f5f5f5">{workspace_id}</span>'
+    if current.startswith(number):
+        return html.unescape(current[len(number):].lstrip())
+    title_prefix = f'{workspace_id} <span foreground="'
+    if current.startswith(title_prefix) and current.endswith('</span>'):
+        return html.unescape(current.split('">', 1)[1][:-len('</span>')])
+    for prefix in (f"{workspace_id}: ", f"{workspace_id} "):
+        if current.startswith(prefix):
+            return current[len(prefix):]
+    return ""
+
+
+def workspace_label(workspace_id, title):
+    if not title:
+        return str(workspace_id)
+    # Pango cannot resolve GTK variables: read the shared CSS definition.
+    css = (Path(__file__).resolve().parent.parent / 'waybar/style.css').read_text()
+    color = re.search(r'@define-color\s+secondary\s+(#[0-9a-fA-F]{6})\s*;', css)[1]
+    return f'{workspace_id} <span foreground="{color}">{html.escape(title)}</span>'
+
+
+def main():
+    workspace = json.loads(subprocess.check_output(
+        ["hyprctl", "-j", "activeworkspace"], text=True))
+    workspace_id = workspace["id"]
+    if workspace_id <= 0:
+        return
+    initial = workspace_title(workspace)
+    prompt = subprocess.run(
+        ["fuzzel", "--dmenu", f"--prompt-only=Workspace {workspace_id} name > ",
+         f"--search={initial}", "--width=40"],
+        capture_output=True, text=True)
+    if prompt.returncode != 0:
+        return
+    name = prompt.stdout.strip()
+    label = workspace_label(workspace_id, name)
+    # Encode every UTF-8 byte as a Lua decimal escape, keeping input out of code.
+    literal = '"' + ''.join(f"\\{byte:03d}" for byte in label.encode()) + '"'
+    subprocess.run(
+        ["hyprctl", "dispatch",
+         f"hl.dsp.workspace.rename({{ workspace = {workspace_id}, name = {literal} }})"],
+        check=True)
+
+
+if __name__ == "__main__":
+    main()

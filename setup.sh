@@ -84,6 +84,7 @@ install_hyprland_configs() {
   link_config "$REPO_DIR/sunshine/sunshine.conf" "$CONFIG_DIR/sunshine/sunshine.conf"
   link_config "$REPO_DIR/bin/screenshot-region" "$HOME/.local/bin/screenshot-region"
   link_config "$REPO_DIR/bin/clipboard-picker" "$HOME/.local/bin/clipboard-picker"
+  link_config "$REPO_DIR/bin/workspace-rename" "$HOME/.local/bin/workspace-rename"
   link_config "$REPO_DIR/bin/session-menu" "$HOME/.local/bin/session-menu"
   link_config "$REPO_DIR/bin/screen-filter" "$HOME/.local/bin/screen-filter"
   link_config "$REPO_DIR/bin/hyprland-session" "$HOME/.local/bin/hyprland-session"
