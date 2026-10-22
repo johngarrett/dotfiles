@@ -78,16 +78,21 @@ case "$command" in
     filter="${2:-}"
     validate_filter "$filter"
     value="$(read_setting "$filter" "$STEP_DEFAULT")"
+    case "$filter" in
+      grayscale) label=gs ;;
+      blue-light) label=bl ;;
+    esac
+    text="$label"
     if is_enabled "$filter"; then
       class=enabled
       state=on
+      text="$label $value%"
     else
       class=disabled
       state=off
     fi
-    label="${filter/blue-light/blue}"
-    printf '{"text":"%s %s%%","tooltip":"%s light filter: %s at %s%%\\nClick to toggle · scroll to adjust","class":"%s"}\n' \
-      "$label" "$value" "$label" "$state" "$value" "$class"
+    printf '{"text":"%s","tooltip":"%s light filter: %s at %s%%\\nClick to toggle · scroll to adjust","class":"%s"}\n' \
+      "$text" "$filter" "$state" "$value" "$class"
     ;;
   toggle)
     filter="${2:-}"
