@@ -79,6 +79,7 @@ install_hyprland_configs() {
   link_config "$REPO_DIR/hypr/hypridle.conf" "$CONFIG_DIR/hypr/hypridle.conf"
   link_config "$REPO_DIR/waybar" "$CONFIG_DIR/waybar"
   link_config "$REPO_DIR/fuzzel" "$CONFIG_DIR/fuzzel"
+  link_config "$REPO_DIR/applications/sone-local.desktop" "$DATA_DIR/applications/sone-local.desktop"
   link_config "$REPO_DIR/mako" "$CONFIG_DIR/mako"
   link_config "$REPO_DIR/sunshine/sunshine.conf" "$CONFIG_DIR/sunshine/sunshine.conf"
   link_config "$REPO_DIR/bin/screenshot-region" "$HOME/.local/bin/screenshot-region"

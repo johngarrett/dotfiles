@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=AudioVideo;Audio;Music;
+Comment=Native Linux client for TIDAL — lossless and bit-perfect audio streaming
+Exec="/home/garrepi/bin/sone-local" %U
+TryExec=/home/garrepi/bin/sone-local
+StartupWMClass=sone
+Icon=sone
+Name=sone-local
+Terminal=false
+Type=Application

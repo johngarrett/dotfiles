@@ -6,13 +6,13 @@
   "margin-left": 4,
   "margin-right": 4,
   "spacing": 8,
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["ext/workspaces"],
   "modules-center": [],
   "modules-right": ["custom/grayscale", "custom/blue-light", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray", "custom/sleep"],
 
-  "hyprland/workspaces": {
+  "ext/workspaces": {
     "all-outputs": false,
-    "disable-scroll": true,
+    "on-click": "activate",
     "format": "{name}"
   },
   "custom/grayscale": {

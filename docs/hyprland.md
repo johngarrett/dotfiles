@@ -37,6 +37,11 @@ Picom, Polybar, or external gesture daemon. The machine has no laptop battery,
 backlight, touchpad, or second display. Waybar shows ordinary numeric buttons
 only for workspaces that currently exist.
 
+The workspace buttons use Waybar's `ext/workspaces` module with the `activate`
+click action. This uses the Wayland workspace protocol and avoids Waybar 0.15's
+`hyprland/workspaces` module sending legacy dispatch commands that the Hyprland
+Lua dispatcher no longer accepts.
+
 Hypridle has two ordered five-minute listeners: the first locks the session and
 the second powers the display off. The DPMS listener turns the display back on
 as soon as input resumes. System resume uses `restore-display`, which waits for
