@@ -70,7 +70,8 @@ group-aware: moving toward a group adds a tab, while moving a tab away removes
 it. The scrolling layout normally inserts new windows in columns to the right.
 `Super+V` arms a one-shot vertical split in the focused column: the next tiled
 window opens beneath it. `Super+B` cancels the pending split, restoring normal
-horizontal placement. `Super+mouse wheel` focuses adjacent columns without
+horizontal placement. `Super+E` resizes all columns to fit the viewport.
+`Super+mouse wheel` focuses adjacent columns without
 wrapping at either end. The focused window has a 1px white border.
 There is no replacement for i3 parent-container focus or arbitrary nested splits.
 

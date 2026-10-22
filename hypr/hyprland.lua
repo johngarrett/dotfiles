@@ -93,7 +93,7 @@ hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + E", hl.dsp.layout("fit all"))
 -- Like i3's split v: arm the focused column without rearranging it.
 local verticalSplitTarget = nil
 hl.bind(mainMod .. " + V", function()
