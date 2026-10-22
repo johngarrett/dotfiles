@@ -94,7 +94,7 @@ hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + W", hl.dsp.group.toggle())
 hl.bind(mainMod .. " + S", hl.dsp.group.next())
 
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("screenshot-region"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('"' .. os.getenv("HOME") .. '/.local/bin/screenshot-region"'))
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("clipboard-picker"))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl reload"))
