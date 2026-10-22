@@ -54,7 +54,7 @@ install_packages() {
           wireless-regdb \
           xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
           pipewire pipewire-pulse wireplumber playerctl pavucontrol \
-          noto-fonts noto-fonts-emoji xorg-xwayland
+          noto-fonts noto-fonts-emoji xorg-xwayland firefox xdg-utils
 
       else
         die "unsupported Linux distribution: install git, curl, zsh, tmux, neovim, and alacritty manually"
@@ -88,6 +88,22 @@ install_hyprland_configs() {
   link_config "$REPO_DIR/bin/screen-filter" "$HOME/.local/bin/screen-filter"
   link_config "$REPO_DIR/bin/hyprland-session" "$HOME/.local/bin/hyprland-session"
   link_config "$REPO_DIR/bin/restore-display" "$HOME/.local/bin/restore-display"
+  configure_default_browser
+}
+
+configure_default_browser() {
+  if ! command -v firefox >/dev/null 2>&1 ||
+     ! command -v xdg-settings >/dev/null 2>&1 ||
+     ! command -v xdg-mime >/dev/null 2>&1; then
+    log "warning: install firefox and xdg-utils, then rerun desktop setup to set the default browser"
+    return
+  fi
+
+  xdg-settings set default-web-browser firefox.desktop
+  xdg-mime default firefox.desktop x-scheme-handler/http
+  xdg-mime default firefox.desktop x-scheme-handler/https
+  xdg-mime default firefox.desktop text/html
+  log "set Firefox as the default browser for web links and HTML files"
 }
 
 install_nvidia_power_config() {

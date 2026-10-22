@@ -8,7 +8,7 @@
   "spacing": 8,
   "modules-left": ["ext/workspaces"],
   "modules-center": [],
-  "modules-right": ["custom/grayscale", "custom/blue-light", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray", "custom/sleep"],
+  "modules-right": ["custom/grayscale", "custom/blue-light", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "custom/weather", "clock", "tray", "custom/sleep"],
 
   "ext/workspaces": {
     "all-outputs": false,
@@ -65,9 +65,14 @@
     "format-critical": "{temperatureC}°C!",
     "tooltip-format": "i7-6700K package: {temperatureC}°C\nGreen <60 · Amber 60–79 · Red ≥80"
   },
+  "custom/weather": {
+    "exec": "python3 $HOME/.config/waybar/weather.py",
+    "return-type": "json",
+    "interval": 600
+  },
   "clock": {
     "interval": 5,
-    "format": "{:%m/%d  %I:%M %p}",
+    "format": "<span text_transform='lowercase'>{:%A, %b %e  %I:%M %p}</span>",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "tray": { "icon-size": 18, "spacing": 8 },

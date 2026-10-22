@@ -32,6 +32,10 @@ before changing the setup script or replacing a desktop component.
 | Audio | PipeWire + WirePlumber | User services/sockets |
 | Screen sharing | xdg-desktop-portal-hyprland | D-Bus activation |
 
+Desktop setup sets Firefox as the default browser and handler for HTTP, HTTPS,
+and HTML files, so external web links open in Firefox. The Arch package step
+installs `firefox` and `xdg-utils` for this configuration.
+
 There is a Hyprpaper wallpaper service, but no battery module, backlight binding, Rofi, Dunst,
 Picom, Polybar, or external gesture daemon. The machine has no laptop battery,
 backlight, touchpad, or second display. Waybar shows ordinary numeric buttons
