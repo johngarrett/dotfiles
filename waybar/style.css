@@ -47,6 +47,10 @@ window#waybar {
 #cpu.warning, #custom-memory.warning { color: #ffcb6b; }
 #cpu.critical, #custom-memory.critical { color: #f07178; }
 
+#temperature { color: #c3d82c; }
+#temperature.warning { color: #ffcb6b; }
+#temperature.critical { background: #bd2c40; color: #ffffff; }
+
 tooltip {
   background: #252525;
   border: 1px solid #444444;
