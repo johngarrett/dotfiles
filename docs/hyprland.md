@@ -54,7 +54,9 @@ Lua dispatcher no longer accepts.
 Hypridle has two ordered five-minute listeners: the first locks the session and
 the second powers the display off. The DPMS listener turns the display back on
 as soon as input resumes. System resume uses `restore-display`, which waits for
-the Wayland output to reappear before re-enabling DPMS. Do not separate these
+the Wayland output to reappear before briefly cycling DPMS off/on, clearing a
+stale resume console frame without waiting for the five-minute idle timer.
+Kernel errors remain available in the journal. Do not separate these
 timeouts unless lock and screen power policy are intentionally being changed
 together.
 

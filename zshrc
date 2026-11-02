@@ -82,3 +82,10 @@ case "$(uname -s)" in
     export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$UID}/ssh-agent.socket"
     ;;
 esac
+
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+export EDITOR=nvim
+bindkey '^G' edit-command-line
