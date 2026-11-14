@@ -108,6 +108,8 @@ for _, direction in ipairs({ "left", "down", "up", "right" }) do
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = direction, group_aware = true }))
 end
 
+hl.bind(mainMod .. " + grave", hl.dsp.focus({ workspace = "previous" }))
+
 for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
