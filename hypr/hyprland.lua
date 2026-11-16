@@ -90,6 +90,8 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + V", hl.dsp.layout("preselect d"))
+hl.bind(mainMod .. " + X", hl.dsp.layout("preselect r"))
 
 -- Hyprland groups are the useful equivalent of i3's tabbed/stacked containers.
 hl.bind(mainMod .. " + W", hl.dsp.group.toggle())

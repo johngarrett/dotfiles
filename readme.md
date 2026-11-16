@@ -73,6 +73,8 @@ laptop battery or backlight device.
 | `Super+F` | Toggle fullscreen |
 | `Super+Shift+F` | Toggle floating |
 | `Super+E` | Toggle the next dwindle split direction |
+| `Super+V` | Prepare a vertical split (next window below) |
+| `Super+X` | Prepare a horizontal split (next window to the right) |
 | `Super+W` | Create or toggle a tabbed window group |
 | `Super+S` | Cycle the active window in a group |
 | `Super+Shift+H/J/K/L` | Move a window; insert into or remove from a group when applicable |

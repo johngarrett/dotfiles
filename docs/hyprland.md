@@ -77,8 +77,10 @@ the active group. `Super+Shift+H/J/K/L` moves a window directionally and is
 group-aware: moving toward a group adds a tab, while moving a tab away removes
 it. New dwindle windows are inserted after the focused window (right or bottom,
 according to the split orientation).
-There is no fake replacement for i3 parent-container focus or separate forced
-horizontal/vertical splits.
+`Super+V` prepares a vertical split (next tiled window below); `Super+X`
+prepares a horizontal split (next tiled window to the right). These one-time
+overrides apply to the next window opened. There is no fake replacement for
+i3 parent-container focus.
 
 Hyprland 0.56's `hyprctl dispatch` evaluates Lua. Shell helpers and bindings
 must therefore use expressions such as:
